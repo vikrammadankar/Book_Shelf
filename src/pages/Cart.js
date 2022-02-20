@@ -1,8 +1,11 @@
 import React from 'react'
+import { Layout } from '../components/components-provider/components-provider'
 
 const Cart = () => {
     return (
-        <div>Cart</div>
+        <Layout>
+            <h1>CART</h1>
+        </Layout>
     )
 }
 

@@ -1,5 +1,6 @@
 // pages and paths
 import { HomePage, Login, Register, ProductInfo, Cart } from './pages/pages-provider/pages-provider'
+
 import PATHS from './pages/pages-provider/paths'
 
 // routes
