@@ -1,9 +1,8 @@
-import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>Firecommerce</h1>
+      <h1 className="text-danger">FIRECOMMERCE</h1>
     </div>
   );
 }
