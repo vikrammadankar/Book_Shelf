@@ -1,0 +1,21 @@
+.navbar.myNavbar{
+    background-color: rgb(0, 119, 255);
+}
+
+.navbar-brand.myLink {
+    font-weight: bold;
+}
+.nav-link.myLink,
+.navbar-brand.myLink {
+    color: #fff !important;
+}
+
+.navbar-toggler.myToggle {
+    padding: .5em;
+    border: none;
+}
+.navbar-toggler.myToggle:focus {
+    outline: none !important;
+    box-shadow: none;
+}
+

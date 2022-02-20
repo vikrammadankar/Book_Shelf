@@ -1,8 +1,11 @@
 import React from 'react'
+import { Navbar } from '../components/components-provider/components-provider'
 
 const Header = () => {
     return (
-        <div>Header</div>
+        <header>
+            <Navbar />
+        </header>
     )
 }
 
