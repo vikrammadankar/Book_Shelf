@@ -3,3 +3,9 @@
   margin: 0;
   padding: 0;
 }
+
+.App {
+  text-align: center;
+  background-color: #cecece;
+  padding: 10px 0;
+}
