@@ -1,5 +1,8 @@
+/* monsterrat font import  */
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@500&family=Poppins:wght@100;300;400;700&family=Road+Rage&display=swap');
 
+
+/* general settings */
 * {
   box-sizing: border-box;
   margin: 0;

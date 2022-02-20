@@ -3,7 +3,7 @@ import { Navbar } from '../components/components-provider/components-provider'
 
 const Header = () => {
     return (
-        <header>
+        <header className="header">
             <Navbar />
         </header>
     )
