@@ -35,17 +35,18 @@
 }
 
 .content {
-    padding-top: 80px;
+    padding-top: 130px;
     padding-left: 10px;
     padding-right: 10px;
+    padding-bottom: 80px;
 }
 
 .footer {
-    padding: 10px;
-    position: absolute;
+    padding: 40px 10px;
+    /* position: absolute;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 0; */
     text-align: center;
     background-color: var(--bgColor);
     color: #fff;
@@ -67,4 +68,10 @@ button {
 }
 button:hover {
     background-color: var(--hover);
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

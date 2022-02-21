@@ -1,8 +1,8 @@
 import React from 'react'
-
 import { Link } from 'react-router-dom'
-import { FaBars } from 'react-icons/fa'
 import { useSelector } from 'react-redux'
+
+import { FaBars } from 'react-icons/fa'
 
 import '../styles/layout.css'
 

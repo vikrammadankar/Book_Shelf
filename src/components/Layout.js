@@ -4,12 +4,12 @@ import { Footer, Header } from './components-provider/components-provider'
 
 const Layout = ({ children }) => {
     return (
-        <div>
+        <div className="main-container">
             <Header />
-            <div className="content">
+            <main className="content">
                 {children}
-            </div>
-            {/* <Footer/> */}
+            </main>
+            <Footer/>
         </div>
     )
 }
