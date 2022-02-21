@@ -1,37 +1,24 @@
-import React, { useState } from 'react'
-import { Layout } from '../components/components-provider/components-provider'
-
-import { collection, addDoc, getDocs } from "firebase/firestore";
-import DB from '../firebase';
-
-// import { products } from '../firebase-products';
+import React, { useState, useEffect } from 'react'
+import { Layout, Product } from '../components/components-provider/components-provider'
+import getProducts from './pages-provider/pages-functions'
 
 const HomePage = () => {
 
     const [products, setProducts] = useState([])
 
-    async function getData() {
-        try {
-            const productsFromFB = await getDocs(collection(DB, 'products'))
-            let productsContainer = []
-            productsFromFB.forEach(doc => {
-                const productWithID = {
-                    id: doc.id,
-                    ...doc.data()
-                }
-                productsContainer.push(productWithID)
-            })
-            setProducts(productsContainer)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
-
+    useEffect(() => {
+        getProducts(setProducts)
+    }, [])
 
     return (
         <Layout>
-            <h1>HOME</h1>
+            <div className="container">
+                <div className="row">
+                    {products.map(product => (
+                        <Product product={product} key={product.id} />
+                    ))}
+                </div>
+            </div>
         </Layout>
     )
 }
