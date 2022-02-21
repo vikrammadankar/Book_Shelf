@@ -2,9 +2,14 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 import { FaBars } from 'react-icons/fa'
+import { useSelector } from 'react-redux'
+
 import '../styles/layout.css'
 
 const Navbar = () => {
+
+    const { cartItems } = useSelector(state => state.cartReducer)
+
     return (
         <nav className="navbar myNavbar navbar-expand-lg navbar-light">
             <div className="container-fluid">
@@ -24,7 +29,7 @@ const Navbar = () => {
                             <Link className="nav-link myLink" to="/">Logout</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link myLink" to="/">Cart</Link>
+                            <Link className="nav-link myLink" to="/">Cart {cartItems.length && cartItems.length}</Link>
                         </li>
                     </ul>
                 </div>

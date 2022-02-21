@@ -1,9 +1,21 @@
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { addToCart } from './components-provider/components-functions'
+
 import '../styles/products.css'
 
 const Product = ({ product }) => {
-    
+
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const { cartItems } = useSelector(state => state.cartReducer)
+
+    useEffect(() => {
+        localStorage.setItem("cartItems", JSON.stringify(cartItems))
+    }, [cartItems])
 
     return (
         <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12 product-container">
@@ -15,7 +27,7 @@ const Product = ({ product }) => {
                 <div className="product-actions">
                     <h2>$ {product.price}</h2>
                     <div className="d-flex">
-                        <button className="mx-2">Add To Cart</button>
+                        <button onClick={() => addToCart(product, dispatch)} className="mx-2">Add To Cart</button>
                         <button onClick={() => navigate(`/productinfo/${product.id}`)} className="mx-2">View</button>
                     </div>
                 </div>
