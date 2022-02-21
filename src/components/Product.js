@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom'
 import '../styles/products.css'
 
 const Product = ({ product }) => {
+    
     const navigate = useNavigate()
 
     return (
