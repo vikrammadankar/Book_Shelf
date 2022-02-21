@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, getDoc, doc } from "firebase/firestore";
 import DB from '../../firebase';
 
 const getProducts = async (setFunction) => {
@@ -18,4 +18,16 @@ const getProducts = async (setFunction) => {
     }
 }
 
-export default getProducts
+const getProduct = async (setFunction, id) => {
+    try {
+        const productFromFB = await getDoc(doc(DB, 'products', id))
+        console.log(productFromFB.data())
+        setFunction(productFromFB.data())
+    } catch (error) {
+        console.log(error)
+    }
+}
+export {
+    getProduct,
+    getProducts
+}

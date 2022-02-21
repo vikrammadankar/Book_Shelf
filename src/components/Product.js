@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router-dom'
 import '../styles/products.css'
 
 const Product = ({ product }) => {
+    const navigate = useNavigate()
+
     return (
         <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12 product-container">
             <div className="m-2 pb-5 text-center product">
@@ -12,7 +15,7 @@ const Product = ({ product }) => {
                     <h2>$ {product.price}</h2>
                     <div className="d-flex">
                         <button className="mx-2">Add To Cart</button>
-                        <button className="mx-2">View</button>
+                        <button onClick={() => navigate(`/productinfo/${product.id}`)} className="mx-2">View</button>
                     </div>
                 </div>
             </div>

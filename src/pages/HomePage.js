@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Layout, Product } from '../components/components-provider/components-provider'
-import getProducts from './pages-provider/pages-functions'
+import { getProducts } from './pages-provider/pages-functions'
 
 const HomePage = () => {
 
