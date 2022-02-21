@@ -1,6 +1,6 @@
 export const products = [
     {
-        name: "nu3 Peanut Butter",
+        name: "Peanut Butter",
         description: "Peanut Butter (Burro di arachidi) - 1 kg - crema di arachidi 100% naturale - Puro burro di arachidi proteico senza zuccheri aggiunti - Produzione controllata.",
         category: "food",
         image: "https://m.media-amazon.com/images/I/71fD15hM2gS._AC_SL1500_.jpg",
