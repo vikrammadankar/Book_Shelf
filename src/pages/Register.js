@@ -1,14 +1,38 @@
 import React, { useState } from 'react'
 
-import { Form } from '../components/components-provider/components-provider'
+import { Form, Loader } from '../components/components-provider/components-provider'
+
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+
+import { toast } from 'react-toastify'
 
 const Register = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
+    const [loading, setLoading] = useState(false)
+
+    const auth = getAuth()
+
+    const register = async () => {
+        try {
+            setLoading(true)
+            await createUserWithEmailAndPassword(auth, email, password)
+            setEmail("")
+            setPassword("")
+            setConfirmPassword("")
+            setLoading(false)
+            toast.success("Registration Successfull!")
+        } catch (error) {
+            console.log(error)
+            setLoading(false)
+            toast.error("Registration Failed!")
+        }
+    }
 
     return (
         <div className="register-container">
+            {loading && <Loader />}
             <div className="row justify-content-center">
                 <div className="col-md-5">
                     <lottie-player
@@ -29,6 +53,7 @@ const Register = () => {
                         setEmail={setEmail}
                         setPassword={setPassword}
                         setConfirmPassword={setConfirmPassword}
+                        register={register}
                     />
                 </div>
             </div>

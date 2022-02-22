@@ -1,13 +1,41 @@
 import React, { useState } from 'react'
-import { Form } from '../components/components-provider/components-provider'
+import { Form, Loader } from '../components/components-provider/components-provider'
+
+
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
 
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [loading, setLoading] = useState(false)
+
+    const auth = getAuth()
+    const navigate = useNavigate()
+
+    const login = async () => {
+        try {
+            setLoading(true)
+            const result = await signInWithEmailAndPassword(auth, email, password)
+            localStorage.setItem('currentUser', JSON.stringify(result))
+            setEmail("")
+            setPassword("")
+            setLoading(false)
+            toast.success("Login Successfull!")
+            navigate("/")
+        } catch (error) {
+            console.log(error)
+            setLoading(false)
+            toast.error("Login Failed!")
+        }
+    }
 
     return (
         <div className="login-container">
+            {loading && <Loader />}
             <div className="row justify-content-center">
                 <div className="col-md-5">
                     <Form
@@ -16,6 +44,7 @@ const Login = () => {
                         password={password}
                         setEmail={setEmail}
                         setPassword={setPassword}
+                        login={login}
                     />
                 </div>
                 <div className="col-md-5">

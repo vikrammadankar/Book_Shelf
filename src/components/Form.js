@@ -9,7 +9,8 @@ const Form = (props) => {
             <input type="email" className="form-control" placeholder="Enter Email..." value={props.email} onChange={(e) => props.setEmail(e.target.value)} />
             <input type="password" className="form-control" placeholder="Enter Password..." value={props.password} onChange={(e) => props.setPassword(e.target.value)} />
             {props.type === "Register" ? <input type="password" className="form-control" placeholder="Confirm Password..." value={props.confirmPassword} onChange={(e) => props.setConfirmPassword(e.target.value)} /> : null}
-            <button className="mt-4">
+
+            <button onClick={props.type === "Register" ? props.register : props.login} className="mt-4">
                 {props.type}
             </button>
 
