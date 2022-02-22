@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-
+import { Form } from '../components/components-provider/components-provider'
 
 const Register = () => {
     const [email, setEmail] = useState("")
@@ -9,7 +9,7 @@ const Register = () => {
 
     return (
         <div className="register-container">
-            <div className="row">
+            <div className="row justify-content-center">
                 <div className="col-md-5">
                     <lottie-player
                         src="https://assets3.lottiefiles.com/packages/lf20_yr6zz3wv.json"
@@ -21,17 +21,15 @@ const Register = () => {
                     </lottie-player>
                 </div>
                 <div className="col-md-5">
-                    <div className="login-form">
-                        <h2>Register</h2>
-                        <hr />
-                        <input type="email" className="form-control" placeholder="Enter Email..." value={email} onChange={(e) => setEmail(e.target.value)} />
-                        <input type="password" className="form-control" placeholder="Enter Password..." value={password} onChange={(e) => setPassword(e.target.value)} />
-                        <input type="password" className="form-control" placeholder="Confirm Password..." value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-
-                        <button>
-                            Register
-                        </button>
-                    </div>
+                    <Form
+                        type="Register"
+                        email={email}
+                        password={password}
+                        confirmPassword={confirmPassword}
+                        setEmail={setEmail}
+                        setPassword={setPassword}
+                        setConfirmPassword={setConfirmPassword}
+                    />
                 </div>
             </div>
         </div>

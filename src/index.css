@@ -1,7 +1,15 @@
 /* monsterrat font import  */
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@500&family=Poppins:wght@100;300;400;700&family=Road+Rage&display=swap');
 
-
+:root {
+  --bgColor: rgba(8, 206, 163, 0.774);
+  --hover: rgba(223, 140, 15, 0.904);
+  --boxShadow: rgba(99, 99, 99, 0.2);
+  --overlay: rgba(51, 51, 51, 0.815);
+  --cremisi: rgb(223, 53, 53);
+  --white: #fff;
+  --aliceBlue: rgb(214, 230, 243);
+}
 /* general settings */
 * {
   box-sizing: border-box;
@@ -10,5 +18,6 @@
 }
 
 body {
+  overflow-x: hidden;
   font-family: 'Poppins', sans-serif;
 }

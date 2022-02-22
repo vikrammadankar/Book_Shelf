@@ -1,8 +1,3 @@
-:root {
-    --bgColor: rgba(8, 206, 163, 0.774);
-    --hover: rgba(223, 140, 15, 0.904);
-}
-
 /* bootstrap overwriting */
 .navbar.myNavbar{
     background-color: var(--bgColor);
@@ -34,7 +29,7 @@
     z-index: 2;
 }
 .cart-counter {
-    color: rgb(212, 31, 31);
+    color: var(--cremisi);
     font-weight: bold;
 }
 
@@ -66,7 +61,7 @@ button {
     border: none;
     outline: none;
     background-color: var(--bgColor);
-    color: #fff;
+    color: var(--white);
     font-weight: 500;
     transition: all .3s ease-in-out;
 }

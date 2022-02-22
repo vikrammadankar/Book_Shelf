@@ -1,3 +1,41 @@
-.form-control {
+.form {
+    padding: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background-color: var(--white);
+}
 
+.form-control {
+    box-shadow: none;
+    outline: none;
+    border: none;
+    margin-top: 15px;
+}
+.form-control:focus {
+    box-shadow: none !important;
+    outline: none;
+}
+.register-container {
+    background: linear-gradient(to bottom,  var(--bgColor) 0%, var(--bgColor) 50%,var(--aliceBlue) 50%,var(--aliceBlue) 100%);
+}
+.login-container {
+    background: linear-gradient(to bottom, var(--aliceBlue) 0%,var(--aliceBlue) 50%, var(--bgColor) 50%, var(--bgColor) 100%);
+}
+
+.register-container,
+.login-container {
+    height: 100vh;
+}
+.register-container .row,
+.login-container .row {
+    height: 100%;
+    align-items: center;
+}
+
+.bottom-nav-link {
+    text-decoration: none;
+    color: var(--bgColor);
+    transition: all .3s ease-in-out;
+}
+.bottom-nav-link:hover {
+    color: var(--hover)
 }

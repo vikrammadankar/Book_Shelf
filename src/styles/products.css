@@ -2,7 +2,7 @@
 
 .product {
     position: relative;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: var(--boxShadow) 0px 2px 8px 0px;
 }
 .product:hover {
     cursor: pointer;
@@ -33,8 +33,8 @@
     align-items: center;
     justify-content: center;
     opacity: 0;
-    background-color: rgba(51, 51, 51, 0.815);
-    color: #fff;
+    background-color: var(--overlay);
+    color: var(--white);
     font-weight: bold;
     transition: all .3s ease-in-out;
 }
@@ -80,7 +80,7 @@
     transition: all .3s ease-in-out;
 }
 .delete-icon:hover {
-    color: red;
+    color: var(--cremisi);
 }
 
 @-webkit-keyframes loader /* Safari and Chrome */ {
