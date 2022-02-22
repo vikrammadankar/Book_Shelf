@@ -31,6 +31,7 @@ const getProduct = async (setFunction, id) => {
 const deleteFromCart = (cartItem, dispatch) => {
     dispatch({ type: "DELETE_FROM_CART", payload: cartItem })
 }
+
 export {
     getProduct,
     getProducts,

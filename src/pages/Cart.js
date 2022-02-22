@@ -13,7 +13,7 @@ const Cart = () => {
 
     return (
         <Layout>
-            <div className={`container text-center ${cartItems.length < 4 && 'myContainer'}`}>
+            <div className={`container text-center ${cartItems.length < 4 && 'vh-80'}`}>
                 <CartTable cartItems={cartItems} />
             </div>
         </Layout>

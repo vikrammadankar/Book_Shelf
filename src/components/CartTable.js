@@ -56,7 +56,7 @@ const CartTable = ({ cartItems }) => {
                             Place Order
                         </button>
                     </div>
-                </> : <h1>No Items in the cart</h1>}
+                </> : <h1>{cartItems.length} Items in the cart</h1>}
         </div>
     )
 }

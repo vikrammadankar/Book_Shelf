@@ -25,7 +25,7 @@ const Product = ({ product }) => {
                     <img className="product-img" src={product.image} alt={product.name} />
                 </div>
                 <div className="product-actions">
-                    <h2>$ {product.price}</h2>
+                    <h2>$ {product.price.toFixed(2)}</h2>
                     <div className="d-flex">
                         <button onClick={() => addToCart(product, dispatch)} className="mx-2">Add To Cart</button>
                         <button onClick={() => navigate(`/productinfo/${product.id}`)} className="mx-2">View</button>

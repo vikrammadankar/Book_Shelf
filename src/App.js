@@ -4,6 +4,7 @@ import { HomePage, Login, Register, ProductInfo, Cart } from './pages/pages-prov
 import PATHS from './pages/pages-provider/paths'
 
 import './index.css';
+import './styles/auth.css'
 
 // routes
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'

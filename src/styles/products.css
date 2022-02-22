@@ -54,6 +54,9 @@
     align-items: center;
     justify-content: center;
 }
+.vh-80 {
+    height: 80vh;
+}
 
 .back-btn {
     display: flex;
