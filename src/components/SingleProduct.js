@@ -1,6 +1,11 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { addToCart } from './components-provider/components-functions'
 
 const SingleProduct = ({ product }) => {
+
+    const dispatch = useDispatch()
+
     return (
         <>
             <h3>{product.name}</h3>
@@ -10,7 +15,7 @@ const SingleProduct = ({ product }) => {
                     <p>{product.description}</p>
                     <p>${product.price}</p>
                     <div className="d-flex justify-content-center">
-                        <button className="d-flex justify-content-end mt-3">
+                        <button onClick={() => addToCart(product, dispatch)} className="d-flex justify-content-end mt-3">
                             Add To Cart
                         </button>
                     </div>
