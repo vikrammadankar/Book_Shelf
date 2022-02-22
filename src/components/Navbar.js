@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
-import { FaBars } from 'react-icons/fa'
+import { FaBars, FaCartPlus } from 'react-icons/fa'
 
 import '../styles/layout.css'
 
@@ -29,7 +29,9 @@ const Navbar = () => {
                             <Link className="nav-link myLink" to="/">Logout</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link myLink" to="/">Cart {cartItems.length && cartItems.length}</Link>
+                            <Link className="nav-link myLink" to="/cart">
+                                <FaCartPlus /> <span className="cart-counter">{cartItems.length > 0 && cartItems.length}</span>
+                            </Link>
                         </li>
                     </ul>
                 </div>

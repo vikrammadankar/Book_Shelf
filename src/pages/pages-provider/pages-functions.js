@@ -27,7 +27,12 @@ const getProduct = async (setFunction, id) => {
         console.log(error)
     }
 }
+
+const deleteFromCart = (cartItem, dispatch) => {
+    dispatch({ type: "DELETE_FROM_CART", payload: cartItem })
+}
 export {
     getProduct,
-    getProducts
+    getProducts,
+    deleteFromCart
 }

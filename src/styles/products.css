@@ -72,6 +72,14 @@
     transform: translateX(-30%);
 }
 
+.delete-icon {
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+.delete-icon:hover {
+    color: red;
+}
+
 @-webkit-keyframes loader /* Safari and Chrome */ {
     from {
       -webkit-transform: rotate(0deg);

@@ -1,10 +1,21 @@
-import React from 'react'
-import { Layout } from '../components/components-provider/components-provider'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+
+import { Layout, CartTable } from '../components/components-provider/components-provider'
 
 const Cart = () => {
+
+    const { cartItems } = useSelector(state => state.cartReducer)
+
+    useEffect(() => {
+        localStorage.setItem("cartItems", JSON.stringify(cartItems))
+    }, [cartItems])
+
     return (
         <Layout>
-            <h1>CART</h1>
+            <div className={`container text-center ${cartItems.length < 4 && 'myContainer'}`}>
+                <CartTable cartItems={cartItems} />
+            </div>
         </Layout>
     )
 }

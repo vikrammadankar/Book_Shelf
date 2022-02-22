@@ -33,6 +33,10 @@
     top: 0;
     z-index: 2;
 }
+.cart-counter {
+    color: rgb(212, 31, 31);
+    font-weight: bold;
+}
 
 .content {
     padding-top: 130px;
