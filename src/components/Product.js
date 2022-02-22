@@ -1,10 +1,10 @@
+// React, Redux & Router-Dom
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
+// functions
 import { addToCart } from './components-provider/components-functions'
-
-import '../styles/products.css'
 
 const Product = ({ product }) => {
 

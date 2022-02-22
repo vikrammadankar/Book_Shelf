@@ -1,6 +1,11 @@
+// React and Router-dom
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+
+// components
 import { Layout, SingleProduct, Loader, BackButton } from '../components/components-provider/components-provider'
+
+// functions
 import { getProduct } from './pages-provider/pages-functions'
 
 const ProductInfo = () => {

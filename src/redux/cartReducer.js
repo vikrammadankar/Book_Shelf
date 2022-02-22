@@ -1,5 +1,6 @@
 import { ACTIONS } from './actions'
 
+// localStorage cart
 const cartFromLS = JSON.parse(localStorage.getItem("cartItems"))
 
 const initialState = {

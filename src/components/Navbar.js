@@ -1,10 +1,10 @@
+// React stuff
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
+// icons
 import { FaBars, FaCartPlus } from 'react-icons/fa'
-
-import '../styles/layout.css'
 
 const Navbar = () => {
 

@@ -1,10 +1,13 @@
+// React & toastify
 import React, { useState } from 'react'
+import { toast } from 'react-toastify'
 
+// components
 import { Form, Loader } from '../components/components-provider/components-provider'
 
+// firebase
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 
-import { toast } from 'react-toastify'
 
 const Register = () => {
     const [email, setEmail] = useState("")

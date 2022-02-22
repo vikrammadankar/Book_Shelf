@@ -1,11 +1,13 @@
+// React, Router-dom & toastify
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
+
+// components
 import { Form, Loader } from '../components/components-provider/components-provider'
 
-
+// firebase
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-
-import { toast } from 'react-toastify'
-import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
 

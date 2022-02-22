@@ -1,6 +1,8 @@
+// React & Redux
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
+// components
 import { Layout, CartTable } from '../components/components-provider/components-provider'
 
 const Cart = () => {

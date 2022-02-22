@@ -1,5 +1,7 @@
-import React from 'react'
+// Redux
 import { useDispatch } from 'react-redux'
+
+// functions
 import { addToCart } from './components-provider/components-functions'
 
 const SingleProduct = ({ product }) => {

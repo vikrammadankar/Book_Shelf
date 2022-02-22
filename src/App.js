@@ -1,15 +1,22 @@
-// pages and paths
+// pages
 import { HomePage, Login, Register, ProductInfo, Cart } from './pages/pages-provider/pages-provider'
+
+// toastify container
 import { ToastContainer } from 'react-toastify'
 
+// route paths & route stuff
 import PATHS from './pages/pages-provider/paths'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
+// component to protect routes
+import ProtectedRoutes from './ProtectedRoutes'
+
+// styles
 import './index.css';
+import './styles/layout.css'
 import './styles/auth.css'
+import './styles/products.css'
 import 'react-toastify/dist/ReactToastify.css'
-
-// routes
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 
 function App() {
   return (
@@ -39,11 +46,3 @@ function App() {
 }
 
 export default App;
-
-export const ProtectedRoutes = ({ children }) => {
-  if (localStorage.getItem("currentUser")) {
-    return children
-  } else {
-    return <Navigate to="/login" />
-  }
-}
