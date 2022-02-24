@@ -29,7 +29,7 @@ const Navbar = () => {
                             <Link className="nav-link myLink" aria-current="page" to="/">{user.email.substring(0, user.email.length - 10)}</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link myLink" to="/">Orders</Link>
+                            <Link className="nav-link myLink" to="/orders">Orders</Link>
                         </li>
                         <li className="nav-item">
                             <Link onClick={logout} className="nav-link myLink" to="/">Logout</Link>

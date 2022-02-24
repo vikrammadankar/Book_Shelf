@@ -1,5 +1,5 @@
 // pages
-import { HomePage, Login, Register, ProductInfo, Cart } from './pages/pages-provider/pages-provider'
+import { HomePage, Login, Register, ProductInfo, Cart, Orders } from './pages/pages-provider/pages-provider'
 
 // toastify container
 import { ToastContainer } from 'react-toastify'
@@ -34,6 +34,9 @@ function App() {
           </ProtectedRoutes>} />
           <Route exact="true" path={PATHS.CART} element={<ProtectedRoutes>
             <Cart />
+          </ProtectedRoutes>} />
+          <Route exact="true" path={PATHS.ORDERS} element={<ProtectedRoutes>
+            <Orders />
           </ProtectedRoutes>} />
 
           {/* free routes */}

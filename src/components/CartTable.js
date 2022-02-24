@@ -31,6 +31,7 @@ const CartTable = ({ cartItems }) => {
     const closeModal = () => setShow(false);
     const showModal = () => setShow(true);
 
+
     // calc the total
     useEffect(() => {
         let tempTotal = 0
@@ -39,6 +40,10 @@ const CartTable = ({ cartItems }) => {
         })
         setTotal(tempTotal)
     }, [cartItems])
+
+    const clearCart = () => {
+        dispatch({ type: "CLEAR_CART" })
+    }
 
     // place the order
     const placeOrder = async () => {
@@ -66,12 +71,14 @@ const CartTable = ({ cartItems }) => {
             toast.error("Order not placed!")
             setLoading(false)
         }
+        clearCart()
     }
 
     return (
         <>
             {loading && <Loader />}
-            <div>
+            {/* <div> */}
+                <h1 className={`${cartItems.length === 0 && "none"}`} >Cart</h1>
                 {cartItems.length > 0 ?
                     <>
                         <table className="table">
@@ -134,7 +141,7 @@ const CartTable = ({ cartItems }) => {
                         </button>
                     </Modal.Footer>
                 </Modal>
-            </div>
+            {/* </div> */}
         </>
     )
 }

@@ -16,6 +16,7 @@ const SingleProduct = ({ product }) => {
                     <img className="product-info-image my-4" src={product.image} alt={product.name} />
                     <p>{product.description}</p>
                     <p>$ {product.price.toFixed(2)}</p>
+                    <h6 className="font-weight-bold">{product.category}</h6>
                     <div className="d-flex justify-content-center">
                         <button onClick={() => addToCart(product, dispatch)} className="d-flex justify-content-end mt-3">
                             Add To Cart

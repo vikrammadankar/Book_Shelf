@@ -7,7 +7,7 @@ const initialState = {
     cartItems: cartFromLS || []
 }
 
-const { ADD_TO_CART, DELETE_FROM_CART } = ACTIONS
+const { ADD_TO_CART, DELETE_FROM_CART, CLEAR_CART } = ACTIONS
 
 export const cartReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -24,6 +24,10 @@ export const cartReducer = (state = initialState, action) => {
                 ...state,
                 cartItems: state.cartItems.filter(cartItem => cartItem.id !== action.payload.id)
             }
+        }
+
+        case CLEAR_CART: {
+            return {...state, cartItems: []}
         }
 
         default: return state;

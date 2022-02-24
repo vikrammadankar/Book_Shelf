@@ -1,7 +1,8 @@
 import { collection, getDocs, getDoc, doc } from "firebase/firestore";
 import DB from '../../firebase';
 
-const getProducts = async (setFunction) => {
+const getProducts = async (setFunction, setLoading) => {
+    setLoading(true)
     try {
         const productsFromFB = await getDocs(collection(DB, 'products'))
         let productsContainer = []
@@ -13,7 +14,10 @@ const getProducts = async (setFunction) => {
             productsContainer.push(productWithID)
         })
         setFunction(productsContainer)
+        setLoading(false)
+
     } catch (error) {
+        setLoading(false)
         console.log(error)
     }
 }
@@ -32,8 +36,31 @@ const deleteFromCart = (cartItem, dispatch) => {
     dispatch({ type: "DELETE_FROM_CART", payload: cartItem })
 }
 
+const getOrders = async (setFunction, setLoading) => {
+    setLoading(true)
+    try {
+        const ordersFromFB = await getDocs(collection(DB, 'orders'))
+        let ordersContainer = []
+        ordersFromFB.forEach(doc => {
+            const orderWithID = {
+                id: doc.id,
+                ...doc.data()
+            }
+            ordersContainer.push(orderWithID)
+        })
+        console.log("ORDERS FROM GETORDERS", ordersContainer)
+        setFunction(ordersContainer)
+        setLoading(false)
+
+    } catch (error) {
+        setLoading(false)
+        console.log(error)
+    }
+}
+
 export {
     getProduct,
     getProducts,
-    deleteFromCart
+    deleteFromCart,
+    getOrders
 }

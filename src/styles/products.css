@@ -83,6 +83,10 @@
     color: var(--cremisi);
 }
 
+.none {
+    display: none;
+}
+
 @-webkit-keyframes loader /* Safari and Chrome */ {
     from {
       -webkit-transform: rotate(0deg);
@@ -119,4 +123,24 @@
     -ms-animation: loader 2s linear infinite;
     -o-animation: loader 2s linear infinite;
     animation: loader 2s linear infinite;
+}
+
+/* lazy loading */
+
+.product-img {
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+.product-img[data-src] {
+    opacity: 0;
+}
+
+@-webkit-keyframes fade {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+@keyframes fade {
+    from {opacity: 1;}
+    to {opacity: 0;}
 }
