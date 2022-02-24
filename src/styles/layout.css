@@ -6,9 +6,11 @@
 .navbar-brand.myLink {
     font-weight: bold;
 }
-.nav-link.myLink,
-.navbar-brand.myLink {
-    color: #fff !important;
+
+.navbar-brand.myLink,
+.nav-link.myLink {
+    color: var(--white) !important;
+    font-weight: bold;
 }
 
 .navbar-toggler.myToggle {
@@ -55,7 +57,7 @@
     margin: 0;
 }
 
-button {
+.myBtn {
     padding: .5rem 1.2rem ;
     box-shadow: none;
     border: none;
@@ -65,7 +67,7 @@ button {
     font-weight: 500;
     transition: all .3s ease-in-out;
 }
-button:hover {
+.myBtn:hover {
     background-color: var(--hover);
 }
 

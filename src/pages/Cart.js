@@ -15,7 +15,7 @@ const Cart = () => {
 
     return (
         <Layout>
-            <div className={`container text-center ${cartItems.length < 4 && 'vh-80'}`}>
+            <div className={`container text-center ${cartItems.length < 4 && 'vh-80'} ${cartItems.length === 0 && "different-h"}`}>
                 <CartTable cartItems={cartItems} />
             </div>
         </Layout>

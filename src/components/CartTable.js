@@ -10,20 +10,25 @@ import { ModalForm, Loader } from '../components/components-provider/components-
 
 // functions
 import { deleteFromCart } from '../pages/pages-provider/pages-functions'
+import { clearCart } from '../components/components-provider/components-functions'
 
 // firebase
 import { addDoc, collection } from 'firebase/firestore'
 import DB from '../firebase'
+
+// import {INFO} from "./components-provider/options"
 
 const CartTable = ({ cartItems }) => {
 
     const dispatch = useDispatch()
 
     const [total, setTotal] = useState(0)
-    const [name, setName] = useState("")
-    const [address, setAddress] = useState("")
-    const [phone, setPhone] = useState("")
-    const [pin, setPin] = useState("")
+    const [info, setInfo] = useState({
+        name: "",
+        address: "",
+        phone: "",
+        pin: ""
+    })
     const [loading, setLoading] = useState(false)
 
     // modal close/open
@@ -41,28 +46,28 @@ const CartTable = ({ cartItems }) => {
         setTotal(tempTotal)
     }, [cartItems])
 
-    const clearCart = () => {
-        dispatch({ type: "CLEAR_CART" })
-    }
+    // const clearCart = () => {
+    //     dispatch({ type: "CLEAR_CART" })
+    // }
 
     // place the order
     const placeOrder = async () => {
         setLoading(true)
-        const info = {
-            name,
-            address,
-            pin,
-            phone
-        }
+
         const order = {
             id: JSON.parse(localStorage.getItem("currentUser")).user.uid,
             cartItems,
             info,
+            date: new Date().toLocaleDateString('en-EN', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            }),
             email: JSON.parse(localStorage.getItem("currentUser")).user.email,
         }
 
         try {
-            const result = await addDoc(collection(DB, "orders"), { order: order })
+            await addDoc(collection(DB, "orders"), { order })
             toast.success("Order placed successfully!")
             closeModal()
             setLoading(false)
@@ -71,77 +76,69 @@ const CartTable = ({ cartItems }) => {
             toast.error("Order not placed!")
             setLoading(false)
         }
-        clearCart()
+        clearCart(dispatch)
     }
 
     return (
         <>
             {loading && <Loader />}
-            {/* <div> */}
-                <h1 className={`${cartItems.length === 0 && "none"}`} >Cart</h1>
-                {cartItems.length > 0 ?
-                    <>
-                        <table className="table">
-                            <thead>
-                                <tr>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Action</th>
+            <h1 className={`${cartItems.length === 0 && "none"}`} >Cart</h1>
+            {cartItems.length > 0 ?
+                <>
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {cartItems.map(cartItem => (
+                                <tr key={cartItem.id} >
+                                    <td>
+                                        <img src={cartItem.image} alt={cartItem.name} width="80" />
+                                    </td>
+                                    <td>
+                                        {cartItem.name}
+                                    </td>
+                                    <td>
+                                        $ {cartItem.price}
+                                    </td>
+                                    <td className="delete-icon">
+                                        <FaTrash onClick={() => deleteFromCart(cartItem, dispatch)} />
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                {cartItems.map(cartItem => (
-                                    <tr key={cartItem.id} >
-                                        <td>
-                                            <img src={cartItem.image} alt={cartItem.name} width="80" />
-                                        </td>
-                                        <td>
-                                            {cartItem.name}
-                                        </td>
-                                        <td>
-                                            $ {cartItem.price}
-                                        </td>
-                                        <td className="delete-icon">
-                                            <FaTrash onClick={() => deleteFromCart(cartItem, dispatch)} />
-                                        </td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                        <div className="d-flex justify-content-end">
-                            <h2 className="total-amount">Total: ${total.toFixed(2)}</h2>
-                        </div>
-                        <div className="d-flex justify-content-end mt-3">
-                            <button onClick={showModal}>
-                                Place Order
-                            </button>
-                        </div>
-                    </> : <h1>{cartItems.length} Items in the cart</h1>}
-
-                <Modal show={show} onHide={closeModal}>
-                    <Modal.Body>
-                        <ModalForm
-                            name={name}
-                            address={address}
-                            phone={phone}
-                            pin={pin}
-                            setName={setName}
-                            setAddress={setAddress}
-                            setPhone={setPhone}
-                            setPin={setPin}
-                        />
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <button variant="secondary" onClick={closeModal}>
-                            Close
-                        </button>
-                        <button variant="primary" onClick={placeOrder}>
+                            ))}
+                        </tbody>
+                    </table>
+                    <div className="d-flex justify-content-end">
+                        <h2 className="total-amount">Total: ${total.toFixed(2)}</h2>
+                    </div>
+                    <div className="d-flex justify-content-end mt-3">
+                        <button className="myBtn" onClick={showModal}>
                             Place Order
                         </button>
-                    </Modal.Footer>
-                </Modal>
-            {/* </div> */}
+                    </div>
+                </> : <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_zuYFad.json" background="transparent" speed="1" style={{ width: "400px", height: "400px" }} loop autoplay></lottie-player>}
+
+            <Modal show={show} onHide={closeModal}>
+                <Modal.Body>
+                    <ModalForm
+                        info={info}
+                        setInfo={setInfo}
+                    />
+                </Modal.Body>
+                <Modal.Footer>
+                    <button className="myBtn" variant="secondary" onClick={closeModal}>
+                        Close
+                    </button>
+                    <button className="myBtn" variant="primary" onClick={placeOrder}>
+                        Place Order
+                    </button>
+                </Modal.Footer>
+            </Modal>
         </>
     )
 }

@@ -10,7 +10,7 @@ const Form = (props) => {
             <input type="password" className="form-control" placeholder="Enter Password..." value={props.password} onChange={(e) => props.setPassword(e.target.value)} />
             {props.type === "Register" ? <input type="password" className="form-control" placeholder="Confirm Password..." value={props.confirmPassword} onChange={(e) => props.setConfirmPassword(e.target.value)} /> : null}
 
-            <button onClick={props.type === "Register" ? props.register : props.login} className="mt-4">
+            <button onClick={props.type === "Register" ? props.register : props.login} className="mt-4 myBtn">
                 {props.type}
             </button>
 

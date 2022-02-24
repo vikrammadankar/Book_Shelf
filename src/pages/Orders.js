@@ -41,7 +41,7 @@ const Orders = () => {
     return (
         <Layout>
             {loading && <Loader />}
-            <div className={`container text-left ${orders.length < 4 && 'vh-80'}`}>
+            <div className={`container text-left ${orders.length < 1 && 'different-h'}`}>
                 <OrdersTable orders={orders} />
             </div>
         </Layout>

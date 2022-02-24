@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { SelectDate } from '../components/components-provider/components-provider'
 import $ from "jquery"
 
 const OrdersTable = ({ orders }) => {
+
+    const [dates, setDates] = useState([])
+    const [date, setDate] = useState("")
+
+    useEffect(() => {
+        setDates((orders.map(order => order.order.date)))
+    }, [])
 
     $(document).ready(function () {
         [].forEach.call(document.querySelectorAll('.product-img[data-src]'), function (img) {
@@ -14,12 +22,17 @@ const OrdersTable = ({ orders }) => {
 
     return (
         <>
-            <h1 className={`${orders.length === 0 && "none"}`} >Orders</h1>
+            <div className={`${orders.length === 0 && "none"}`}>
+                <h1>Orders</h1>
+                <SelectDate dates={dates} date={date} setDate={setDate} />
+            </div>
 
-            {orders.map(order => {
+            {orders.length ? orders
+                .filter(item => item.order.date.includes(date))
+                .map(order => {
                 return (
                     <>
-                        <h3>{order.order.email}</h3>
+                        <small>{order.order.date}</small>
                         <table key={order.id} className="table mb-5">
                             <thead>
                                 <tr>
@@ -43,7 +56,7 @@ const OrdersTable = ({ orders }) => {
 
                     </>
                 )
-            })}
+            }) : <lottie-player src="https://assets7.lottiefiles.com/private_files/lf30_oqpbtola.json" background="transparent" speed="1" style={{ width: "400px", height: "400px" }} loop autoplay></lottie-player>}
 
         </>
     )

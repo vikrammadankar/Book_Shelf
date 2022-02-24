@@ -1,6 +1,6 @@
 import React from 'react'
 
-import OPTIONS from './components-provider/options'
+import {OPTIONS} from './components-provider/options'
 
 const Select = ({ category, setCategory }) => {
 

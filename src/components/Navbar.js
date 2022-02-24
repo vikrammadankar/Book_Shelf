@@ -32,12 +32,12 @@ const Navbar = () => {
                             <Link className="nav-link myLink" to="/orders">Orders</Link>
                         </li>
                         <li className="nav-item">
-                            <Link onClick={logout} className="nav-link myLink" to="/">Logout</Link>
+                            <Link className="nav-link myLink" to="/cart">
+                                <FaCartPlus size={20} /> <span className="cart-counter">{cartItems.length > 0 && cartItems.length}</span>
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link myLink" to="/cart">
-                                <FaCartPlus /> <span className="cart-counter">{cartItems.length > 0 && cartItems.length}</span>
-                            </Link>
+                            <Link onClick={logout} className="nav-link myLink" to="/">Logout</Link>
                         </li>
                     </ul>
                 </div>

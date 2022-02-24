@@ -39,8 +39,8 @@ const Product = ({ product }) => {
                 <div className="product-actions">
                     <h2>$ {product.price.toFixed(2)}</h2>
                     <div className="d-flex">
-                        <button onClick={() => addToCart(product, dispatch)} className="mx-2">Add To Cart</button>
-                        <button onClick={() => navigate(`/productinfo/${product.id}`)} className="mx-2">View</button>
+                        <button onClick={() => addToCart(product, dispatch)} className="myBtn mx-2">Add To Cart</button>
+                        <button onClick={() => navigate(`/productinfo/${product.id}`)} className="myBtn mx-2">View</button>
                     </div>
                 </div>
             </div>

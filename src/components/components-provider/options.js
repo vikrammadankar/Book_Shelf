@@ -17,4 +17,11 @@ const OPTIONS = [
     },
 ]
 
-export default OPTIONS
+const INFO = {
+    name: "",
+    address: "",
+    phone: 0,
+    pin: 0
+}
+
+export {OPTIONS, INFO}
