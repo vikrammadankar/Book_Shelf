@@ -9,6 +9,7 @@ import { lazyLoader } from '../functions/handlers'
 const Admin = () => {
     const [adminProducts, setAdminProducts] = useState([])
     const [loading, setLoading] = useState(false)
+    // const [openedModal, setOpenedModal] = useState(false)
 
     useEffect(() => {
         getProducts(setAdminProducts, setLoading)

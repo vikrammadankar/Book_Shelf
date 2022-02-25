@@ -16,4 +16,10 @@ const lazyLoader = () => {
     });
 }
 
-export { editProduct, lazyLoader }
+const openModalToAddProduct = (setAddModal) => {
+    setAddModal(true)
+}
+
+
+
+export { editProduct, lazyLoader, openModalToAddProduct }

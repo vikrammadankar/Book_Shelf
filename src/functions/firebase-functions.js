@@ -1,4 +1,4 @@
-import { collection, getDocs, getDoc, doc, setDoc } from "firebase/firestore";
+import { collection, getDocs, getDoc, doc, setDoc, addDoc, deleteDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import DB from '../firebase';
 
@@ -53,21 +53,45 @@ const getOrders = async (setFunction, setLoading) => {
     }
 }
 
-const deleteProductFromDB = () => {
-
+const deleteProductFromDB = async (adminProduct, setLoading, setAdminProducts) => {
+    try {
+        setLoading(true)
+        await deleteDoc(doc(DB, "products", adminProduct.id))
+        toast.success("Product Deleted Succesfully!")
+        setLoading(false)
+        getProducts(setAdminProducts, setLoading)
+    } catch (error) {
+        toast.error("Failed To Delete the Product!")
+        setLoading(false)
+    }
 }
 
-const editProductFromDB = async (adminProduct, setLoading, closeModal, setAdminProducts) => {
+const editProductFromDB = async (adminProduct, setLoading, closeModal) => {
     try {
         setLoading(true)
         await setDoc(doc(DB, "products", adminProduct.id), adminProduct)
         toast.success("Product Edited Succesfully!")
-        getProducts(setAdminProducts, setLoading)
+        // getProducts(setAdminProducts, setLoading)
+        window.location.reload()
         closeModal()
     } catch (error) {
         setLoading(false)
         console.log(error)
         toast.error("Product Edited Failed!")
+    }
+}
+
+const addNewProductToDB = async (newProduct, closeAddModal, setLoading) => {
+    try {
+        setLoading(true)
+        await addDoc(collection(DB, "products"), newProduct)
+        toast.success("Product Added Succesfully!")
+        window.location.reload()
+        closeAddModal()
+    } catch (error) {
+        setLoading(false)
+        console.log(error)
+        toast.error("Failed To Add the Product!")
     }
 }
 
@@ -77,5 +101,6 @@ export {
     getProducts,
     getOrders,
     deleteProductFromDB,
-    editProductFromDB
+    editProductFromDB,
+    addNewProductToDB
 }
