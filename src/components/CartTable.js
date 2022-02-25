@@ -8,8 +8,7 @@ import { FaTrash } from 'react-icons/fa'
 import { Loader, OrderModal } from '../components/components-provider/components-provider'
 
 // functions
-import { deleteFromCart } from '../pages/pages-provider/pages-functions'
-import { clearCart } from '../components/components-provider/components-functions'
+import { clearCart, deleteFromCart } from '../functions/redux-functions'
 
 // firebase
 import { addDoc, collection } from 'firebase/firestore'
@@ -102,7 +101,7 @@ const CartTable = ({ cartItems }) => {
                                         $ {cartItem.price}
                                     </td>
                                     <td className="delete-icon">
-                                        <FaTrash onClick={() => deleteFromCart(cartItem, dispatch)} />
+                                        <FaTrash size={20} onClick={() => deleteFromCart(cartItem, dispatch)} />
                                     </td>
                                 </tr>
                             ))}

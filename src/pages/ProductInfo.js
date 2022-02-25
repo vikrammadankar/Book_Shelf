@@ -6,7 +6,7 @@ import { useParams } from 'react-router-dom'
 import { Layout, SingleProduct, Loader, BackButton } from '../components/components-provider/components-provider'
 
 // functions
-import { getProduct } from './pages-provider/pages-functions'
+import { getProduct } from '../functions/firebase-functions'
 
 const ProductInfo = () => {
     const [product, setProduct] = useState(null)

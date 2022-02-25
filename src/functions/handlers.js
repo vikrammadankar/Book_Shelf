@@ -1,11 +1,8 @@
 import $ from "jquery"
 
-const addToCart = (product, dispatch) => {
-    dispatch({ type: "ADD_TO_CART", payload: product })
-}
-
-const clearCart = (dispatch) => {
-    dispatch({ type: "CLEAR_CART" })
+const editProduct = (item, functions) => {
+    functions.setProductToEdit(item)
+    functions.showModal(true)
 }
 
 const lazyLoader = () => {
@@ -19,8 +16,4 @@ const lazyLoader = () => {
     });
 }
 
-export {
-    addToCart,
-    clearCart,
-    lazyLoader
-}
+export { editProduct, lazyLoader }

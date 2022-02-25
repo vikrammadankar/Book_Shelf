@@ -89,6 +89,13 @@
 .delete-icon:hover {
     color: var(--cremisi);
 }
+.edit-icon {
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+.edit-icon:hover {
+    color: var(--warning);
+}
 
 .none {
     display: none;

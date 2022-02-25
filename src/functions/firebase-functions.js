@@ -1,5 +1,5 @@
 import { collection, getDocs, getDoc, doc } from "firebase/firestore";
-import DB from '../../firebase';
+import DB from '../firebase';
 
 const getProducts = async (setFunction, setLoading) => {
     setLoading(true)
@@ -21,7 +21,6 @@ const getProducts = async (setFunction, setLoading) => {
         console.log(error)
     }
 }
-
 const getProduct = async (setFunction, id) => {
     try {
         const productFromFB = await getDoc(doc(DB, 'products', id))
@@ -31,11 +30,6 @@ const getProduct = async (setFunction, id) => {
         console.log(error)
     }
 }
-
-const deleteFromCart = (cartItem, dispatch) => {
-    dispatch({ type: "DELETE_FROM_CART", payload: cartItem })
-}
-
 const getOrders = async (setFunction, setLoading) => {
     setLoading(true)
     try {
@@ -48,7 +42,7 @@ const getOrders = async (setFunction, setLoading) => {
             }
             ordersContainer.push(orderWithID)
         })
-        console.log("ORDERS FROM GETORDERS", ordersContainer)
+
         setFunction(ordersContainer)
         setLoading(false)
 
@@ -61,6 +55,5 @@ const getOrders = async (setFunction, setLoading) => {
 export {
     getProduct,
     getProducts,
-    deleteFromCart,
     getOrders
 }

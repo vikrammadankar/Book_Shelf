@@ -2,33 +2,38 @@
 import React, { useState, useEffect } from 'react'
 
 // components
-import { Layout, Product, Loader, Select } from '../components/components-provider/components-provider'
+import { Layout, Product, Loader, SelectCategories } from '../components/components-provider/components-provider'
 
 // functions
-import { getProducts } from './pages-provider/pages-functions'
+import { getProducts } from '../functions/firebase-functions'
 
 const HomePage = () => {
 
     const [products, setProducts] = useState([])
-    // const [searchKey, setSearchKey] = useState("")
     const [category, setCategory] = useState("")
     const [loading, setLoading] = useState(false)
+
+    const [categories, setCategories] = useState([])
 
     useEffect(() => {
         getProducts(setProducts, setLoading)
     }, [])
 
+    useEffect(() => {
+        setCategories([...new Set(products.map(product => product.category))])
+    }, [products])
+
     return (
         <Layout>
             <div className="container">
-                <Select
+                <SelectCategories
                     category={category}
                     setCategory={setCategory}
+                    categories={categories}
                 />
                 <div className={`row ${products.length === 0 && "vh-100"}`}>
                     {loading && <Loader />}
                     {products.length > 0 && products
-                        // .filter(toFilterItem => toFilterItem.name.toLowerCase().includes(searchKey))
                         .filter(toFilterCategory => toFilterCategory.category.toLowerCase().includes(category))
                         .map(product => (
                             <Product product={product} key={product.id} />

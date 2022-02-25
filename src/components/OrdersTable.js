@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
+
 import { SelectDate } from '../components/components-provider/components-provider'
 
-import { lazyLoader } from './components-provider/components-functions'
+import { lazyLoader } from '../functions/handlers'
 
 const OrdersTable = ({ orders }) => {
 
@@ -10,8 +11,7 @@ const OrdersTable = ({ orders }) => {
 
     useEffect(() => {
         setDates([...new Set(orders.map( order => order.order.date))])
-    }, [])
-    console.log(dates)
+    }, [orders])
 
     lazyLoader()
 

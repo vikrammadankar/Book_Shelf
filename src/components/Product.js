@@ -3,10 +3,9 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
-// import $ from 'jquery'
-
 // functions
-import { addToCart, lazyLoader } from './components-provider/components-functions'
+import { addToCart } from '../functions/redux-functions'
+import {lazyLoader} from '../functions/handlers'
 
 
 const Product = ({ product }) => {
@@ -21,14 +20,6 @@ const Product = ({ product }) => {
     }, [cartItems])
 
     lazyLoader()
-    // $(document).ready(function () {
-    //     [].forEach.call(document.querySelectorAll('.product-img[data-src]'), function (img) {
-    //         img.setAttribute('src', img.getAttribute('data-src'));
-    //         img.onload = function () {
-    //             img.removeAttribute('data-src');
-    //         };
-    //     });
-    // });
 
     return (
         <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12 product-container">
