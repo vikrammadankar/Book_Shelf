@@ -9,7 +9,7 @@ const SelectDate = ({ dates, date, setDate }) => {
                 value={date}
                 className="form-control">
                 <option value="" >All</option>
-                {[...new Set(dates)].map((date, index) => <option key={index} value={date} >{date}</option>)}
+                {dates.map((date, index) => <option key={index} value={date} >{date}</option>)}
             </select>
         </div>
     )

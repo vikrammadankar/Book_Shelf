@@ -3,10 +3,9 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 import { FaTrash } from 'react-icons/fa'
-import { Modal } from 'react-bootstrap'
 
 // components
-import { ModalForm, Loader } from '../components/components-provider/components-provider'
+import { Loader, OrderModal } from '../components/components-provider/components-provider'
 
 // functions
 import { deleteFromCart } from '../pages/pages-provider/pages-functions'
@@ -16,7 +15,6 @@ import { clearCart } from '../components/components-provider/components-function
 import { addDoc, collection } from 'firebase/firestore'
 import DB from '../firebase'
 
-// import {INFO} from "./components-provider/options"
 
 const CartTable = ({ cartItems }) => {
 
@@ -46,9 +44,6 @@ const CartTable = ({ cartItems }) => {
         setTotal(tempTotal)
     }, [cartItems])
 
-    // const clearCart = () => {
-    //     dispatch({ type: "CLEAR_CART" })
-    // }
 
     // place the order
     const placeOrder = async () => {
@@ -123,22 +118,13 @@ const CartTable = ({ cartItems }) => {
                     </div>
                 </> : <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_zuYFad.json" background="transparent" speed="1" style={{ width: "400px", height: "400px" }} loop autoplay></lottie-player>}
 
-            <Modal show={show} onHide={closeModal}>
-                <Modal.Body>
-                    <ModalForm
-                        info={info}
-                        setInfo={setInfo}
-                    />
-                </Modal.Body>
-                <Modal.Footer>
-                    <button className="myBtn" variant="secondary" onClick={closeModal}>
-                        Close
-                    </button>
-                    <button className="myBtn" variant="primary" onClick={placeOrder}>
-                        Place Order
-                    </button>
-                </Modal.Footer>
-            </Modal>
+            <OrderModal
+                show={show}
+                closeModal={closeModal}
+                info={info}
+                setInfo={setInfo}
+                placeOrder={placeOrder}
+            />
         </>
     )
 }

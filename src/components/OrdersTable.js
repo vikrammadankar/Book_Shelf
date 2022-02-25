@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { SelectDate } from '../components/components-provider/components-provider'
-import $ from "jquery"
+
+import { lazyLoader } from './components-provider/components-functions'
 
 const OrdersTable = ({ orders }) => {
 
@@ -8,17 +9,11 @@ const OrdersTable = ({ orders }) => {
     const [date, setDate] = useState("")
 
     useEffect(() => {
-        setDates((orders.map(order => order.order.date)))
+        setDates([...new Set(orders.map( order => order.order.date))])
     }, [])
+    console.log(dates)
 
-    $(document).ready(function () {
-        [].forEach.call(document.querySelectorAll('.product-img[data-src]'), function (img) {
-            img.setAttribute('src', img.getAttribute('data-src'));
-            img.onload = function () {
-                img.removeAttribute('data-src');
-            };
-        });
-    });
+    lazyLoader()
 
     return (
         <>
@@ -28,35 +23,34 @@ const OrdersTable = ({ orders }) => {
             </div>
 
             {orders.length ? orders
-                .filter(item => item.order.date.includes(date))
-                .map(order => {
-                return (
-                    <>
-                        <small>{order.order.date}</small>
-                        <table key={order.id} className="table mb-5">
-                            <thead>
-                                <tr>
-                                    <th>Image</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {order.order.cartItems.map((item) => {
-                                    return (<tr>
-                                        <td>
-                                            <img className="product-img" data-src={item.image} alt={item.name} width="80" />
-                                        </td>
-                                        <td>{item.name}</td>
-                                        <td>$ {item.price}</td>
-                                    </tr>)
-                                })}
-                            </tbody>
-                        </table>
+                .filter((item) => item.order.date.includes(date))
+                .map((order, index) => {
+                    return (
+                        <>
+                            <table key={index} className="table mb-5">
+                                <thead>
+                                    <tr>
+                                        <th>Image</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {order.order.cartItems.map((item) => {
+                                        return (<tr>
+                                            <td>
+                                                <img className="product-img" data-src={item.image} alt={item.name} width="80" />
+                                            </td>
+                                            <td>{item.name}</td>
+                                            <td>$ {item.price}</td>
+                                        </tr>)
+                                    })}
+                                </tbody>
+                            </table>
 
-                    </>
-                )
-            }) : <lottie-player src="https://assets7.lottiefiles.com/private_files/lf30_oqpbtola.json" background="transparent" speed="1" style={{ width: "400px", height: "400px" }} loop autoplay></lottie-player>}
+                        </>
+                    )
+                }) : <lottie-player src="https://assets7.lottiefiles.com/private_files/lf30_oqpbtola.json" background="transparent" speed="1" style={{ width: "400px", height: "400px" }} loop autoplay></lottie-player>}
 
         </>
     )
