@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 // functions
 import { addToCart } from '../functions/redux-functions'
-import {lazyLoader} from '../functions/handlers'
+import { lazyLoader } from '../functions/handlers'
 
 
 const Product = ({ product }) => {
@@ -29,7 +29,7 @@ const Product = ({ product }) => {
                     <img className="product-img" data-src={product.image} alt={product.name} />
                 </div>
                 <div className="product-actions">
-                    <h2>$ {product.price.toFixed(2)}</h2>
+                    <h2>$ {product.price}</h2>
                     <div className="d-flex">
                         <button onClick={() => addToCart(product, dispatch)} className="myBtn mx-2">Add To Cart</button>
                         <button onClick={() => navigate(`/productinfo/${product.id}`)} className="myBtn mx-2">View</button>

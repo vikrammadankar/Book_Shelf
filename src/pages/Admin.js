@@ -4,12 +4,9 @@ import { Layout, Loader, AdminTable } from '../components/components-provider/co
 import { getProducts } from '../functions/firebase-functions'
 import { lazyLoader } from '../functions/handlers'
 
-
-
 const Admin = () => {
     const [adminProducts, setAdminProducts] = useState([])
     const [loading, setLoading] = useState(false)
-    // const [openedModal, setOpenedModal] = useState(false)
 
     useEffect(() => {
         getProducts(setAdminProducts, setLoading)
@@ -19,10 +16,8 @@ const Admin = () => {
 
     return (
         <Layout>
-            {loading && <Loader />}
-
             <div className="container">
-                <AdminTable adminProducts={adminProducts} setAdminProducts={setAdminProducts} setLoading={setLoading} />
+                {loading ? <Loader /> : <AdminTable adminProducts={adminProducts} setAdminProducts={setAdminProducts} setLoading={setLoading} />}
             </div>
         </Layout>
     )

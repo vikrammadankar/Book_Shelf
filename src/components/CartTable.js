@@ -12,7 +12,7 @@ import { clearCart, deleteFromCart } from '../functions/redux-functions'
 
 // firebase
 import { addDoc, collection } from 'firebase/firestore'
-import DB from '../firebase'
+import {DB} from '../firebase'
 
 
 const CartTable = ({ cartItems }) => {

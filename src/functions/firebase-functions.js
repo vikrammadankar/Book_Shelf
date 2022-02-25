@@ -1,6 +1,7 @@
 import { collection, getDocs, getDoc, doc, setDoc, addDoc, deleteDoc } from "firebase/firestore";
+
 import { toast } from "react-toastify";
-import DB from '../firebase';
+import { DB } from '../firebase';
 
 const getProducts = async (setFunction, setLoading) => {
     setLoading(true)
@@ -52,7 +53,6 @@ const getOrders = async (setFunction, setLoading) => {
         console.log(error)
     }
 }
-
 const deleteProductFromDB = async (adminProduct, setLoading, setAdminProducts) => {
     try {
         setLoading(true)
@@ -65,7 +65,6 @@ const deleteProductFromDB = async (adminProduct, setLoading, setAdminProducts) =
         setLoading(false)
     }
 }
-
 const editProductFromDB = async (adminProduct, setLoading, closeModal) => {
     try {
         setLoading(true)
@@ -80,7 +79,6 @@ const editProductFromDB = async (adminProduct, setLoading, closeModal) => {
         toast.error("Product Edited Failed!")
     }
 }
-
 const addNewProductToDB = async (newProduct, closeAddModal, setLoading) => {
     try {
         setLoading(true)
@@ -94,7 +92,6 @@ const addNewProductToDB = async (newProduct, closeAddModal, setLoading) => {
         toast.error("Failed To Add the Product!")
     }
 }
-
 
 export {
     getProduct,

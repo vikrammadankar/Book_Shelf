@@ -17,6 +17,7 @@ const AdminTable = ({ adminProducts, setLoading, setAdminProducts }) => {
         name: "",
         price: 0,
         image: "",
+        description: "",
         category: ""
     })
     const closeModal = () => setShow(false);
@@ -24,13 +25,14 @@ const AdminTable = ({ adminProducts, setLoading, setAdminProducts }) => {
     const showAddModal = () => setAddModal(true)
     const closeAddModal = () => {
         setAddModal(false)
-        setNewProduct({ name: "", price: 0, image: "", category: "" })
+        setNewProduct({ name: "", price: 0, image: "", description: "", category: "" })
     }
 
     const [productToEdit, setProductToEdit] = useState({
         name: "",
         price: 0,
         image: "",
+        description: "",
         category: ""
     })
 
@@ -40,7 +42,7 @@ const AdminTable = ({ adminProducts, setLoading, setAdminProducts }) => {
                 <h1>List of Products</h1>
                 <button className="myBtn" onClick={showAddModal}>Add Product</button>
             </div>
-            <table className="table mb-5">
+            <table className="table table-striped mb-5">
                 <thead>
                     <tr>
                         <th>Image</th>
@@ -51,12 +53,12 @@ const AdminTable = ({ adminProducts, setLoading, setAdminProducts }) => {
                 </thead>
                 <tbody>
                     {adminProducts.map((item, index) => {
-                        return (<tr key={index}>
+                        return (<tr className="mb-3" key={index}>
                             <td>
                                 <img className="product-img" data-src={item.image} alt={item.name} width="80" />
                             </td>
-                            <td>{item.name}</td>
-                            <td>$ {item.price}</td>
+                            <td >{item.name}</td>
+                            <td >$ {item.price}</td>
                             <td className="delete-icon" onClick={() => deleteProductFromDB(item, setLoading, setAdminProducts)}>
                                 <FaTrash size={20} />
                             </td>

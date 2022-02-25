@@ -14,7 +14,7 @@ const ProductInfo = () => {
 
     useEffect(() => {
         getProduct(setProduct, params.id)
-    }, [])
+    }, [params.id])
 
     return (
         <Layout>

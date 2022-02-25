@@ -10,19 +10,23 @@ const SingleProduct = ({ product }) => {
 
     return (
         <>
-            <h3>{product.name}</h3>
-            <div className="row justify-content-center">
-                <div className="col-md-8">
+            <h1 className="product-name">{product.name}</h1>
+            <div className="d-flex justify-content-center mt-5">
+                <div className="product-image-container w-50">
                     <img className="product-info-image my-4" src={product.image} alt={product.name} />
-                    <p>{product.description}</p>
-                    <p>$ {product.price.toFixed(2)}</p>
-                    <h6 className="font-weight-bold">{product.category}</h6>
-                    <div className="d-flex justify-content-center">
-                        <button onClick={() => addToCart(product, dispatch)} className="d-flex justify-content-end mt-3 myBtn">
-                            Add To Cart
-                        </button>
-                    </div>
                 </div>
+                <div className="w-50 d-flex align-items-center justify-content-center flex-column">
+                    <p className="product-price">$ {product.price}</p>
+                    <h6 className="product-category">{product.category}</h6>
+                </div>
+            </div>
+            <div className="description mt-5">
+                <p>{product.description}</p>
+            </div>
+            <div className="d-flex justify-content-center mt-4">
+                <button onClick={() => addToCart(product, dispatch)} className="d-flex justify-content-end mt-3 myBtn">
+                    Add To Cart
+                </button>
             </div>
         </>
     )

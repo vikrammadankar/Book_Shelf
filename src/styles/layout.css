@@ -44,10 +44,6 @@
 
 .footer {
     padding: 40px 10px;
-    /* position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0; */
     text-align: center;
     background-color: var(--bgColor);
     color: #fff;
@@ -57,45 +53,4 @@
     margin: 0;
 }
 
-.myBtn {
-    padding: .5rem 1.2rem ;
-    box-shadow: none;
-    border: none;
-    outline: none;
-    background-color: var(--bgColor);
-    color: var(--white);
-    font-weight: 500;
-    transition: all .3s ease-in-out;
-}
-.myBtn:hover {
-    background-color: var(--hover);
-}
 
-.main-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.border-bottom {
-    border-bottom: 1px solid black;
-}
-
-
-.product-img {
-    opacity: 1;
-    transition: opacity 0.3s;
-}
-.product-img[data-src] {
-    opacity: 0;
-}
-
-@-webkit-keyframes fade {
-    from {opacity: 1;}
-    to {opacity: 0;}
-}
-
-@keyframes fade {
-    from {opacity: 1;}
-    to {opacity: 0;}
-}
