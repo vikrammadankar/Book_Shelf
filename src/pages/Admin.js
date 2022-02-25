@@ -21,7 +21,7 @@ const Admin = () => {
             {loading && <Loader />}
 
             <div className="container">
-                <AdminTable adminProducts={adminProducts} />
+                <AdminTable adminProducts={adminProducts} setAdminProducts={setAdminProducts} setLoading={setLoading} />
             </div>
         </Layout>
     )

@@ -1,17 +1,14 @@
 import { useState } from 'react'
 
 import { FaTrash, FaEdit } from 'react-icons/fa'
-import { useDispatch } from 'react-redux'
 
-import { deleteProductFromDB, editProductFromDB } from '../functions/redux-functions'
+import { deleteProductFromDB, editProductFromDB } from '../functions/firebase-functions'
 
 import { EditModal } from '../components/components-provider/components-provider'
 
 import { editProduct } from '../functions/handlers'
 
-const AdminTable = ({ adminProducts }) => {
-
-    const dispatch = useDispatch()
+const AdminTable = ({ adminProducts, setLoading, setAdminProducts }) => {
 
     // modal close/open
     const [show, setShow] = useState(false);
@@ -44,7 +41,7 @@ const AdminTable = ({ adminProducts }) => {
                             </td>
                             <td>{item.name}</td>
                             <td>$ {item.price}</td>
-                            <td className="delete-icon" onClick={() => deleteProductFromDB(item, dispatch)}>
+                            <td className="delete-icon">
                                 <FaTrash size={20} />
                             </td>
                             <td className="edit-icon" onClick={() => editProduct(item, {setProductToEdit, showModal})}>
@@ -60,6 +57,8 @@ const AdminTable = ({ adminProducts }) => {
                 productToEdit={productToEdit}
                 setProductToEdit={setProductToEdit}
                 editProductFromDB={editProductFromDB}
+                setLoading={setLoading}
+                setAdminProducts={setAdminProducts}
             />
         </>
     )

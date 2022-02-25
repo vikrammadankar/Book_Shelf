@@ -10,10 +10,14 @@ const OrdersTable = ({ orders }) => {
     const [date, setDate] = useState("")
 
     useEffect(() => {
-        setDates([...new Set(orders.map( order => order.order.date))])
+        setDates([...new Set(orders.map(order => order.order.date))])
     }, [orders])
 
+    // console.log(orders[1].order.cartItems)
+
+
     lazyLoader()
+
 
     return (
         <>
@@ -27,7 +31,7 @@ const OrdersTable = ({ orders }) => {
                 .map((order, index) => {
                     return (
                         <>
-                            <table key={index} className="table mb-5">
+                            <table key={index} className="table mb-5 border-bottom bg-light">
                                 <thead>
                                     <tr>
                                         <th>Image</th>
@@ -37,17 +41,21 @@ const OrdersTable = ({ orders }) => {
                                 </thead>
                                 <tbody>
                                     {order.order.cartItems.map((item) => {
-                                        return (<tr>
+                                        return (<tr key={item.uid}>
                                             <td>
                                                 <img className="product-img" data-src={item.image} alt={item.name} width="80" />
                                             </td>
                                             <td>{item.name}</td>
-                                            <td>$ {item.price}</td>
+                                            <td>$ {item.price.toFixed(2)}</td>
                                         </tr>)
                                     })}
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td>Total: $ {order.order.cartItems.reduce((tot, item) => item.price + tot, 0).toFixed(2)}</td>
+                                    </tr>
+                                </tfoot>
                             </table>
-
                         </>
                     )
                 }) : <lottie-player src="https://assets7.lottiefiles.com/private_files/lf30_oqpbtola.json" background="transparent" speed="1" style={{ width: "400px", height: "400px" }} loop autoplay></lottie-player>}

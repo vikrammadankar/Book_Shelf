@@ -13,7 +13,7 @@ const EditModal = (props) => {
                 <button className="myBtn" variant="secondary" onClick={props.closeModal}>
                     Close
                 </button>
-                <button className="myBtn" variant="primary" onClick={props.editProductFromDB}>
+                <button className="myBtn" variant="primary" onClick={() => props.editProductFromDB(props.productToEdit, props.setLoading, props.closeModal, props.setAdminProducts)}>
                     Edit
                 </button>
             </Modal.Footer>

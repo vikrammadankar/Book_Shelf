@@ -9,17 +9,15 @@ const deleteFromCart = (cartItem, dispatch) => {
 }
 
 
-const deleteProductFromDB = (adminProduct, dispatch) => {
-    dispatch({ type: "DELETE_FROM_DB", payload: adminProduct })
-}
-const editProductFromDB = (adminProduct, dispatch) => {
-    dispatch({ type: "EDIT_PRODUCT_FROM_DB", payload: adminProduct })
-}
+// const deleteProductFromDB = (adminProduct, dispatch) => {
+//     dispatch({ type: "DELETE_FROM_DB", payload: adminProduct })
+// }
+// const editProductFromDB = (adminProduct, dispatch) => {
+//     dispatch({ type: "EDIT_PRODUCT_FROM_DB", payload: adminProduct })
+// }
 
 export {
     addToCart,
     clearCart,
-    deleteFromCart,
-    deleteProductFromDB,
-    editProductFromDB
+    deleteFromCart
 }
