@@ -4,6 +4,7 @@ const PATHS = {
     REGISTER: "/register",
     CART: "/cart",
     ORDERS: "/orders",
+    ADMIN: "/admin",
     PRODUCT_INFO: "/productinfo/:id"
 }
 
