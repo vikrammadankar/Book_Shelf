@@ -2,7 +2,7 @@
 import { useDispatch } from 'react-redux'
 
 // functions
-import { addToCart } from '../functions/redux-functions'
+import { addToCart } from '../../functions/redux-functions'
 
 const SingleProduct = ({ product }) => {
 

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
-import { SelectDate } from '../components/components-provider/components-provider'
+import { SelectDate } from '../components-provider/components-provider'
 
-import { lazyLoader } from '../functions/handlers'
+import { lazyLoader } from '../../functions/handlers'
 
 const OrdersTable = ({ orders }) => {
 
@@ -21,7 +21,7 @@ const OrdersTable = ({ orders }) => {
 
     return (
         <>
-            <div className={`${orders.length === 0 && "none"}`}>
+            <div className={`d-flex justify-content-between align-items-center mb-5 ${orders.length === 0 && "none"}`}>
                 <h1>Orders</h1>
                 <SelectDate dates={dates} date={date} setDate={setDate} />
             </div>

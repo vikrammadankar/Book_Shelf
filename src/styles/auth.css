@@ -4,13 +4,24 @@
     background-color: var(--white);
 }
 
-.form-control {
+.form-control, .select {
     box-shadow: none;
     outline: none;
     border: none;
     margin-top: 15px;
 }
-.form-control:focus {
+.select {
+    padding: .5em;
+    cursor: pointer;
+    background: none;
+    border: 1px solid var(--bgColor);
+    color: var(--bgColor);
+    transition: all .3s ease-in-out;
+}
+.select:hover {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.form-control:focus, .select:focus {
     box-shadow: none !important;
     outline: none;
 }

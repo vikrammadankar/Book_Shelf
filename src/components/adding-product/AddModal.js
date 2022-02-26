@@ -1,7 +1,7 @@
 import React from 'react'
 import { Modal } from 'react-bootstrap'
 
-import { AddForm } from '../components/components-provider/components-provider'
+import { AddForm } from '../components-provider/components-provider'
 
 const AddModal = (props) => {
     return (

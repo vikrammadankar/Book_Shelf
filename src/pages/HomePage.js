@@ -26,11 +26,14 @@ const HomePage = () => {
     return (
         <Layout>
             <div className="container">
-                <SelectCategories
-                    category={category}
-                    setCategory={setCategory}
-                    categories={categories}
-                />
+                <div className={`d-flex justify-content-between align-items-center mb-5 ${products.length === 0 && "none"}`}>
+                    <h1>Shop</h1>
+                    <SelectCategories
+                        category={category}
+                        setCategory={setCategory}
+                        categories={categories}
+                    />
+                </div>
                 <div className={`row ${products.length === 0 && "vh-100"}`}>
                     {loading && <Loader />}
                     {products.length > 0 && products

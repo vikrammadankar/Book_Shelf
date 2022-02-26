@@ -4,6 +4,13 @@
     position: relative;
     box-shadow: var(--boxShadow) 0px 2px 8px 0px;
 }
+.cart-product {
+    position: relative;
+    box-shadow: var(--boxShadow) 0px 2px 8px 0px;
+}
+.cart-product h2 {
+    margin: 0;
+}
 .product:hover {
     cursor: pointer;
 }
@@ -39,7 +46,8 @@
     transition: all .3s ease-in-out;
 }
 
-.product:hover .product-actions {
+.product:hover .product-actions,
+.cart-product:hover .product-actions {
     opacity: 1;
 }
 

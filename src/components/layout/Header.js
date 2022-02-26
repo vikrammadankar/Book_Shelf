@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar } from '../components/components-provider/components-provider'
+import { Navbar } from '../components-provider/components-provider'
 
 const Header = () => {
     return (

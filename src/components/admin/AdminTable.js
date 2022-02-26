@@ -2,11 +2,11 @@ import { useState } from 'react'
 
 import { FaTrash, FaEdit } from 'react-icons/fa'
 
-import { deleteProductFromDB, editProductFromDB, addNewProductToDB } from '../functions/firebase-functions'
+import { deleteProductFromDB, editProductFromDB, addNewProductToDB } from '../../functions/firebase-functions'
 
-import { EditModal, AddModal } from '../components/components-provider/components-provider'
+import { EditModal, AddModal } from '../components-provider/components-provider'
 
-import { editProduct } from '../functions/handlers'
+import { editProduct } from '../../functions/handlers'
 
 const AdminTable = ({ adminProducts, setLoading, setAdminProducts }) => {
 
@@ -38,7 +38,7 @@ const AdminTable = ({ adminProducts, setLoading, setAdminProducts }) => {
 
     return (
         <>
-            <div className="d-flex justify-content-between align-items-center">
+            <div className="d-flex justify-content-between align-items-center mb-5">
                 <h1>List of Products</h1>
                 <button className="myBtn" onClick={showAddModal}>Add Product</button>
             </div>

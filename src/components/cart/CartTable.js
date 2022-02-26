@@ -5,14 +5,14 @@ import { toast } from 'react-toastify'
 import { FaTrash } from 'react-icons/fa'
 
 // components
-import { Loader, OrderModal } from '../components/components-provider/components-provider'
+import { Loader, OrderModal } from '../components-provider/components-provider'
 
 // functions
-import { clearCart, deleteFromCart } from '../functions/redux-functions'
+import { clearCart, deleteFromCart } from '../../functions/redux-functions'
 
 // firebase
 import { addDoc, collection } from 'firebase/firestore'
-import {DB} from '../firebase'
+import { DB } from '../../firebase'
 
 
 const CartTable = ({ cartItems }) => {
@@ -76,46 +76,29 @@ const CartTable = ({ cartItems }) => {
     return (
         <>
             {loading && <Loader />}
-            <h1 className={`${cartItems.length === 0 && "none"}`} >Cart</h1>
-            {cartItems.length > 0 ?
-                <>
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th>Image</th>
-                                <th>Name</th>
-                                <th>Price</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {cartItems.map(cartItem => (
-                                <tr key={cartItem.id} >
-                                    <td>
-                                        <img src={cartItem.image} alt={cartItem.name} width="80" />
-                                    </td>
-                                    <td>
-                                        {cartItem.name}
-                                    </td>
-                                    <td>
-                                        $ {cartItem.price}
-                                    </td>
-                                    <td className="delete-icon">
-                                        <FaTrash size={20} onClick={() => deleteFromCart(cartItem, dispatch)} />
-                                    </td>
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    <div className="d-flex justify-content-end">
-                        <h2 className="total-amount">Total: ${total.toFixed(2)}</h2>
-                    </div>
-                    <div className="d-flex justify-content-end mt-3">
-                        <button className="myBtn" onClick={showModal}>
-                            Place Order
-                        </button>
-                    </div>
-                </> : <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_zuYFad.json" background="transparent" speed="1" style={{ width: "400px", height: "400px" }} loop autoplay></lottie-player>}
+            <h1 className={`mb-5 ${cartItems.length === 0 && "none"}`} >Cart</h1>
+            {cartItems.length > 0 ? <>
+                <div className={`row ${cartItems.length === 0 && "vh-100"}`}>
+                    {cartItems.map(cartItem => <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12 product-container">
+                        <div className="m-2 text-center cart-product p-4">
+                            <div className="product-content">
+                                <h3>{cartItem.name}</h3>
+                                <img className="product-img mt-2" src={cartItem.image} alt={cartItem.name} />
+                            </div>
+                            <div className="product-actions delete-icon">
+                                <FaTrash size={20} onClick={() => deleteFromCart(cartItem, dispatch)} />
+                            </div>
+                            <h2 className="mt-2">$ {cartItem.price}</h2>
+                        </div>
+                    </div>)}
+                </div>
+                <div className="d-flex justify-content-between my-5">
+                    <h2 className="total-amount">Total: ${total}</h2>
+                    <button className="myBtn" onClick={showModal}>
+                        Place Order
+                    </button>
+                </div>
+            </> : <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_zuYFad.json" background="transparent" speed="1" style={{ width: "400px", height: "400px" }} loop autoplay></lottie-player>}
 
             <OrderModal
                 show={show}

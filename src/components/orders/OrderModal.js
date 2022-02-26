@@ -1,6 +1,6 @@
 import React from 'react'
 import { Modal } from 'react-bootstrap'
-import { ModalForm } from '../components/components-provider/components-provider'
+import { ModalForm } from '../components-provider/components-provider'
 
 const OrderModal = (props) => {
     return (

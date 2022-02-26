@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 // functions
-import { addToCart } from '../functions/redux-functions'
-import { lazyLoader } from '../functions/handlers'
+import { addToCart } from '../../functions/redux-functions'
+import { lazyLoader } from '../../functions/handlers'
 
 
 const Product = ({ product }) => {

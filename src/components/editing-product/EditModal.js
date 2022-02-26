@@ -1,7 +1,7 @@
 import React from 'react'
 import { Modal } from 'react-bootstrap'
 
-import { EditForm } from '../components/components-provider/components-provider'
+import { EditForm } from '../components-provider/components-provider'
 
 const EditModal = (props) => {
     return (
