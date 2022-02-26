@@ -10,9 +10,9 @@ import { getProducts } from '../functions/firebase-functions'
 const HomePage = () => {
 
     const [products, setProducts] = useState([])
-    const [category, setCategory] = useState("")
     const [loading, setLoading] = useState(false)
 
+    const [category, setCategory] = useState("")
     const [categories, setCategories] = useState([])
 
     useEffect(() => {

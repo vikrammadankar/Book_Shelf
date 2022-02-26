@@ -1,14 +1,14 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-import { FaTrash, FaEdit } from 'react-icons/fa'
+import { deleteProductFromDB } from '../../functions/firebase-functions'
 
-import { deleteProductFromDB, editProductFromDB, addNewProductToDB } from '../../functions/firebase-functions'
+import { AllOrdersTable, AllAdminProductsTable } from '../components-provider/components-provider'
 
-import { EditModal, AddModal } from '../components-provider/components-provider'
+import { editProduct, lazyLoader } from '../../functions/handlers'
 
-import { editProduct } from '../../functions/handlers'
+import { Tabs, Tab } from 'react-bootstrap'
 
-const AdminTable = ({ adminProducts, setLoading, setAdminProducts }) => {
+const AdminTable = ({ adminProducts, setLoading, setAdminProducts, orders }) => {
 
     // modal close/open
     const [show, setShow] = useState(false);
@@ -22,7 +22,7 @@ const AdminTable = ({ adminProducts, setLoading, setAdminProducts }) => {
     })
     const closeModal = () => setShow(false);
     const showModal = () => setShow(true);
-    const showAddModal = () => setAddModal(true)
+    // const showAddModal = () => setAddModal(true)
     const closeAddModal = () => {
         setAddModal(false)
         setNewProduct({ name: "", price: 0, image: "", description: "", category: "" })
@@ -36,57 +36,45 @@ const AdminTable = ({ adminProducts, setLoading, setAdminProducts }) => {
         category: ""
     })
 
+    const [dates, setDates] = useState([])
+    const [date, setDate] = useState("")
+
+    useEffect(() => {
+        setDates([...new Set(orders.map(order => order.order.date))])
+    }, [orders])
+
+    lazyLoader()
+
     return (
         <>
-            <div className="d-flex justify-content-between align-items-center mb-5">
-                <h1>List of Products</h1>
-                <button className="myBtn" onClick={showAddModal}>Add Product</button>
-            </div>
-            <table className="table table-striped mb-5">
-                <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {adminProducts.map((item, index) => {
-                        return (<tr className="mb-3" key={index}>
-                            <td>
-                                <img className="product-img" data-src={item.image} alt={item.name} width="80" />
-                            </td>
-                            <td >{item.name}</td>
-                            <td >$ {item.price}</td>
-                            <td className="delete-icon" onClick={() => deleteProductFromDB(item, setLoading, setAdminProducts)}>
-                                <FaTrash size={20} />
-                            </td>
-                            <td className="edit-icon" onClick={() => editProduct(item, { setProductToEdit, showModal })}>
-                                <FaEdit size={20} />
-                            </td>
-                        </tr>)
-                    })}
-                </tbody>
-            </table>
-            <EditModal
-                show={show}
-                closeModal={closeModal}
-                productToEdit={productToEdit}
-                setProductToEdit={setProductToEdit}
-                editProductFromDB={editProductFromDB}
-                setLoading={setLoading}
-                setAdminProducts={setAdminProducts}
-            />
-            <AddModal
-                newProduct={newProduct}
-                setNewProduct={setNewProduct}
-                addModal={addModal}
-                closeAddModal={closeAddModal}
-                addNewProductToDB={addNewProductToDB}
-                setLoading={setLoading}
-                setAdminProducts={setAdminProducts}
-            />
+            <Tabs defaultActiveKey="Products" variant="pills" id="uncontrolled-tab-example" className="mb-4">
+                <Tab title="Products" eventKey="Products" >
+                    <AllAdminProductsTable
+                        adminProducts={adminProducts}
+                        setAdminProducts={setAdminProducts}
+                        showModal={showModal}
+                        setLoading={setLoading}
+                        deleteProductFromDB={deleteProductFromDB}
+                        editProduct={editProduct}
+                        show={show}
+                        productToEdit={productToEdit}
+                        setProductToEdit={setProductToEdit}
+                        closeModal={closeModal}
+                        addModal={addModal}
+                        newProduct={newProduct}
+                        setNewProduct={setNewProduct}
+                        closeAddModal={closeAddModal}
+                    />
+                </Tab>
+                <Tab title="Orders" eventKey="Orders" >
+                    <AllOrdersTable
+                        dates={dates}
+                        date={date}
+                        setDate={setDate}
+                        orders={orders}
+                    />
+                </Tab>
+            </Tabs>
         </>
     )
 }

@@ -1,10 +1,9 @@
 import $ from "jquery"
 
-const editProduct = (item, functions) => {
-    functions.setProductToEdit(item)
-    functions.showModal(true)
+const editProduct = (item, setProductToEdit, showModal) => {
+    setProductToEdit(item)
+    showModal(true)
 }
-
 const lazyLoader = () => {
     $(document).ready(function () {
         [].forEach.call(document.querySelectorAll('.product-img[data-src]'), function (img) {
@@ -15,11 +14,8 @@ const lazyLoader = () => {
         });
     });
 }
-
 const openModalToAddProduct = (setAddModal) => {
     setAddModal(true)
 }
-
-
 
 export { editProduct, lazyLoader, openModalToAddProduct }

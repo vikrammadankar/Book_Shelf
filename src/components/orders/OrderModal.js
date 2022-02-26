@@ -3,6 +3,7 @@ import { Modal } from 'react-bootstrap'
 import { ModalForm } from '../components-provider/components-provider'
 
 const OrderModal = (props) => {
+
     return (
         <Modal show={props.show} onHide={props.closeModal}>
             <Modal.Body>
@@ -15,7 +16,9 @@ const OrderModal = (props) => {
                 <button className="myBtn" variant="secondary" onClick={props.closeModal}>
                     Close
                 </button>
-                <button className="myBtn" variant="primary" onClick={props.placeOrder}>
+                <button className="myBtn" variant="primary" onClick={() => props.placeOrder(
+                    props.cartItems, props.info, props.setLoading, props.clearCart, props.closeModal, props.dispatch
+                )}>
                     Place Order
                 </button>
             </Modal.Footer>

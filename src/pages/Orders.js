@@ -9,9 +9,11 @@ const Orders = () => {
     const [orders, setOrders] = useState([])
     const [loading, setLoading] = useState(false)
 
+    const userID = JSON.parse(localStorage.getItem("currentUser")).user.uid
+
     useEffect(() => {
-        getOrders(setOrders, setLoading)
-    }, [])
+        getOrders(setOrders, setLoading, userID)
+    }, [userID])
 
     return (
         <Layout>

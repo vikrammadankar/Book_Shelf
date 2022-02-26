@@ -1,6 +1,5 @@
-import React from 'react'
-
 const ModalForm = ({ info, setInfo }) => {
+
     return (
         <div className="form">
             <h2>Place Your Order</h2>

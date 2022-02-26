@@ -1,11 +1,11 @@
-import { collection, getDocs, getDoc, doc, setDoc, addDoc, deleteDoc } from "firebase/firestore";
+import { collection, query, where, getDocs, getDoc, doc, setDoc, addDoc, deleteDoc } from "firebase/firestore";
 
 import { toast } from "react-toastify";
 import { DB } from '../firebase';
 
 const getProducts = async (setFunction, setLoading) => {
-    setLoading(true)
     try {
+        setLoading(true)
         const productsFromFB = await getDocs(collection(DB, 'products'))
         let productsContainer = []
         productsFromFB.forEach(doc => {
@@ -32,20 +32,43 @@ const getProduct = async (setFunction, id) => {
         console.log(error)
     }
 }
-const getOrders = async (setFunction, setLoading) => {
-    setLoading(true)
+const getOrders = async (setFunction, setLoading, userID) => {
     try {
-        const ordersFromFB = await getDocs(collection(DB, 'orders'))
-        let ordersContainer = []
-        ordersFromFB.forEach(doc => {
-            const orderWithID = {
+        setLoading(true)
+        const q = query(collection(DB, "orders"), where("order.id", "==", userID));
+
+        let ordersWithAuthID = []
+
+        const collectionWithAuthID = await getDocs(q);
+
+        collectionWithAuthID.forEach((doc) => {
+            ordersWithAuthID.push({
+                id: doc.id,
+                ...doc.data()
+            })
+        });
+
+        setFunction(ordersWithAuthID)
+        setLoading(false)
+
+    } catch (error) {
+        setLoading(false)
+        console.log(error)
+    }
+}
+const getAllOrders = async (setAllOrders, setLoading) => {
+    try {
+        setLoading(true)
+        const allOrders = await getDocs(collection(DB, 'orders'))
+        let allOrdersContainer = []
+        allOrders.forEach(doc => {
+            const singleOrder = {
                 id: doc.id,
                 ...doc.data()
             }
-            ordersContainer.push(orderWithID)
+            allOrdersContainer.push(singleOrder)
         })
-
-        setFunction(ordersContainer)
+        setAllOrders(allOrdersContainer)
         setLoading(false)
 
     } catch (error) {
@@ -65,13 +88,12 @@ const deleteProductFromDB = async (adminProduct, setLoading, setAdminProducts) =
         setLoading(false)
     }
 }
-const editProductFromDB = async (adminProduct, setLoading, closeModal) => {
+const editProductFromDB = async (adminProduct, setLoading, closeModal, setAdminProducts) => {
     try {
         setLoading(true)
         await setDoc(doc(DB, "products", adminProduct.id), adminProduct)
         toast.success("Product Edited Succesfully!")
-        // getProducts(setAdminProducts, setLoading)
-        window.location.reload()
+        getProducts(setAdminProducts, setLoading)
         closeModal()
     } catch (error) {
         setLoading(false)
@@ -92,6 +114,33 @@ const addNewProductToDB = async (newProduct, closeAddModal, setLoading) => {
         toast.error("Failed To Add the Product!")
     }
 }
+const placeOrder = async (cartItems, info, setLoading, clearCart, closeModal, dispatch) => {
+
+    const order = {
+        id: JSON.parse(localStorage.getItem("currentUser")).user.uid,
+        cartItems,
+        info,
+        date: new Date().toLocaleDateString('en-EN', {
+            day: 'numeric',
+            month: 'long',
+            year: 'numeric'
+        }),
+        email: JSON.parse(localStorage.getItem("currentUser")).user.email,
+    }
+
+    try {
+        setLoading(true)
+        await addDoc(collection(DB, "orders"), { order })
+        toast.success("Order placed successfully!")
+        closeModal()
+        setLoading(false)
+    } catch (error) {
+        console.log(error)
+        toast.error("Order not placed!")
+        setLoading(false)
+    }
+    clearCart(dispatch)
+}
 
 export {
     getProduct,
@@ -99,5 +148,7 @@ export {
     getOrders,
     deleteProductFromDB,
     editProductFromDB,
-    addNewProductToDB
+    addNewProductToDB,
+    placeOrder,
+    getAllOrders
 }

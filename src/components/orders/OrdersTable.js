@@ -13,25 +13,23 @@ const OrdersTable = ({ orders }) => {
         setDates([...new Set(orders.map(order => order.order.date))])
     }, [orders])
 
-    // console.log(orders[1].order.cartItems)
-
-
     lazyLoader()
-
 
     return (
         <>
-            <div className={`d-flex justify-content-between align-items-center mb-5 ${orders.length === 0 && "none"}`}>
+
+            {orders.length ? <div className="d-flex justify-content-between align-items-center mb-5">
                 <h1>Orders</h1>
                 <SelectDate dates={dates} date={date} setDate={setDate} />
-            </div>
+            </div> : null}
 
-            {orders.length ? orders
-                .filter((item) => item.order.date.includes(date))
+            {orders.length ?
+            orders
+                .filter((order) => order.order.date.includes(date))
                 .map((order, index) => {
                     return (
                         <>
-                            <table key={index} className="table mb-5 border-bottom bg-light">
+                            <table key={order.order.email} className="table mb-5 border-bottom bg-light">
                                 <thead>
                                     <tr>
                                         <th>Image</th>
@@ -46,13 +44,13 @@ const OrdersTable = ({ orders }) => {
                                                 <img className="product-img" data-src={item.image} alt={item.name} width="80" />
                                             </td>
                                             <td>{item.name}</td>
-                                            <td>$ {item.price.toFixed(2)}</td>
+                                            <td>$ {item.price}</td>
                                         </tr>)
                                     })}
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <td>Total: $ {order.order.cartItems.reduce((tot, item) => item.price + tot, 0).toFixed(2)}</td>
+                                        <td>Total: $ {order.order.cartItems.reduce((tot, item) => item.price + tot, 0)}</td>
                                     </tr>
                                 </tfoot>
                             </table>
