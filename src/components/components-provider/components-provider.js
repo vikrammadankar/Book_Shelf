@@ -1,20 +1,29 @@
-export { default as Layout } from '../Layout'
-export { default as Header } from '../Header'
-export { default as Footer } from '../Footer'
-export { default as Navbar } from '../Navbar'
-export { default as Product } from '../Product'
-export { default as SingleProduct } from '../SingleProduct'
-export { default as Loader } from '../Loader'
-export { default as BackButton } from '../BackButton'
-export { default as CartTable } from '../CartTable'
-export { default as Form } from '../Form'
-export { default as ModalForm } from '../ModalForm'
-export { default as SelectCategories } from '../SelectCategories'
-export { default as OrdersTable } from '../OrdersTable'
-export { default as SelectDate } from '../SelectDate'
-export { default as OrderModal } from '../OrderModal'
-export { default as AdminTable } from '../AdminTable'
-export { default as EditForm } from '../EditForm'
-export { default as EditModal } from '../EditModal'
-export { default as AddModal } from '../AddModal'
-export { default as AddForm } from '../AddForm'
+export { default as Layout } from '../layout/Layout'
+export { default as Header } from '../layout/Header'
+export { default as Footer } from '../layout/Footer'
+export { default as Navbar } from '../layout/Navbar'
+
+export { default as Product } from '../product/Product'
+export { default as SingleProduct } from '../product/SingleProduct'
+
+export { default as Loader } from '../ui/Loader'
+export { default as BackButton } from '../ui/BackButton'
+
+export { default as CartTable } from '../cart/CartTable'
+
+export { default as Form } from '../auth/Form'
+
+export { default as ModalForm } from '../orders/ModalForm'
+export { default as OrdersTable } from '../orders/OrdersTable'
+export { default as OrderModal } from '../orders/OrderModal'
+
+export { default as SelectCategories } from '../select/SelectCategories'
+export { default as SelectDate } from '../select/SelectDate'
+
+export { default as AdminTable } from '../admin/AdminTable'
+
+export { default as EditForm } from '../editing-product/EditForm'
+export { default as EditModal } from '../editing-product/EditModal'
+
+export { default as AddModal } from '../adding-product/AddModal'
+export { default as AddForm } from '../adding-product/AddForm'
