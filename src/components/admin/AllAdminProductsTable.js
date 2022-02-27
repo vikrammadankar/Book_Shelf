@@ -28,11 +28,11 @@ const AllAdminProductsTable = (props) => {
                                 <img className="product-img" data-src={item.image} alt={item.name} width="80" />
                             </td>
                             <td >{item.name}</td>
-                            <td >$ {item.price}</td>
+                            <td >{new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(item.price)}</td>
                             <td className="delete-icon" onClick={() => props.deleteProductFromDB(item, props.setLoading, props.setAdminProducts)}>
                                 <FaTrash size={20} />
                             </td>
-                            <td className="edit-icon" onClick={() => props.editProduct(item, props.setProductToEdit, props.showModal)}>
+                            <td className="edit-icon" onClick={() => props.editProduct(item, props.setProductToEdit, props.showAddModal)}>
                                 <FaEdit size={20} />
                             </td>
                         </tr>)

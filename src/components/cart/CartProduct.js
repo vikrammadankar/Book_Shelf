@@ -12,7 +12,7 @@ const CartProduct = ({cartItem, deleteFromCart, dispatch}) => {
                 <div className="product-actions delete-icon">
                     <FaTrash size={20} onClick={() => deleteFromCart(cartItem, dispatch)} />
                 </div>
-                <h2 className="mt-2">$ {cartItem.price}</h2>
+                <h2 className="mt-2">{new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(cartItem.price)}</h2>
             </div>
         </div>
     )

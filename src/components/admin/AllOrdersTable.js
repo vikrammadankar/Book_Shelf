@@ -26,13 +26,13 @@ const allOrdersTable = (props) => {
                                         <img className="product-img" data-src={item.image} alt={item.name} width="80" />
                                     </td>
                                     <td>{item.name}</td>
-                                    <td>$ {item.price}</td>
+                                    <td>{new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(item.price)}</td>
                                 </tr>)
                             })}
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td>Total: $ {order.order.cartItems.reduce((tot, item) => item.price + tot, 0)}</td>
+                                <td>Total: $ {order.order.cartItems.reduce((tot, item) => new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(item.price) + tot, 0)}</td>
                             </tr>
                         </tfoot>
                     </table>

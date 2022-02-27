@@ -16,7 +16,7 @@ const SingleProduct = ({ product }) => {
                     <img className="product-info-image my-4" src={product.image} alt={product.name} />
                 </div>
                 <div className="w-50 d-flex align-items-center justify-content-center flex-column">
-                    <p className="product-price">$ {product.price}</p>
+                    <p className="product-price">{new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(product.price)}</p>
                     <h6 className="product-category">{product.category}</h6>
                 </div>
             </div>

@@ -22,7 +22,7 @@ const AdminTable = ({ adminProducts, setLoading, setAdminProducts, orders }) => 
     })
     const closeModal = () => setShow(false);
     const showModal = () => setShow(true);
-    // const showAddModal = () => setAddModal(true)
+    const showAddModal = () => setAddModal(true)
     const closeAddModal = () => {
         setAddModal(false)
         setNewProduct({ name: "", price: 0, image: "", description: "", category: "" })
@@ -64,6 +64,7 @@ const AdminTable = ({ adminProducts, setLoading, setAdminProducts, orders }) => 
                         newProduct={newProduct}
                         setNewProduct={setNewProduct}
                         closeAddModal={closeAddModal}
+                        showAddModal={showAddModal}
                     />
                 </Tab>
                 <Tab title="Orders" eventKey="Orders" >

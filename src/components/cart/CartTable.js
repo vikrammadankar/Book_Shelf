@@ -39,8 +39,6 @@ const CartTable = ({ cartItems }) => {
         setTotal(tempTotal)
     }, [cartItems])
 
-    // placeOrder(cartItems, info, setLoading, clearCart, closeModal, dispatch)
-
     return (
         <>
             {loading && <Loader />}
