@@ -11,19 +11,13 @@ import { getFirestore } from 'firebase/firestore'
 // Your web app's Firebase configuration
 
 const firebaseConfig = {
-
-    apiKey: "AIzaSyAlM0KHMJvhP8U1wQK6inZXE0ekHL9qmuQ",
-
-    authDomain: "firecommerce-87edd.firebaseapp.com",
-
-    projectId: "firecommerce-87edd",
-
-    storageBucket: "firecommerce-87edd.appspot.com",
-
-    messagingSenderId: "116559726527",
-
-    appId: "1:116559726527:web:bcb92f61080756aa1c830a"
-
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_DATABASE_URL,
+    projectId: process.env.REACT_APP_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID
 };
 
 
@@ -33,5 +27,5 @@ const app = initializeApp(firebaseConfig);
 const DB = getFirestore(app)
 
 export {
-DB
+    DB
 }
