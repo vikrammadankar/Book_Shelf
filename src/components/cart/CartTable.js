@@ -9,6 +9,7 @@ import { Loader, OrderModal, CartFooter, CartProduct } from '../components-provi
 // functions
 import { clearCart, deleteFromCart } from '../../functions/redux-functions'
 import { placeOrder } from '../../functions/firebase-functions'
+import { extractTotalFromSingleArray } from '../../functions/handlers'
 
 
 const CartTable = ({ cartItems }) => {
@@ -32,27 +33,26 @@ const CartTable = ({ cartItems }) => {
 
     // calc the total
     useEffect(() => {
-        let tempTotal = 0
-        cartItems.forEach(cartItem => {
-            tempTotal += cartItem.price
-        })
-        setTotal(tempTotal)
+        extractTotalFromSingleArray(cartItems, setTotal)
     }, [cartItems])
 
     return (
         <>
             {loading && <Loader />}
-
-            <h1 className={`mb-5 ${cartItems.length === 0 && "none"}`} >Cart</h1>
+            <div className={`page-top mb-5 ${cartItems.length === 0 && "none"}`} >
+                <h1>Cart</h1>
+            </div>
 
             {cartItems.length > 0 ? <>
-                <div className={`row ${cartItems.length === 0 && "vh-100"}`}>
+                <div className="row">
                     {cartItems.map(cartItem => <CartProduct cartItem={cartItem} deleteFromCart={deleteFromCart} dispatch={dispatch} />)}
                 </div>
 
                 <CartFooter total={total} showModal={showModal} />
 
-            </> : <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_zuYFad.json" background="transparent" speed="1" style={{ width: "400px", height: "400px" }} loop autoplay></lottie-player>}
+            </> : <div className="vh-100">
+                <lottie-player src="https://assets3.lottiefiles.com/packages/lf20_zuYFad.json" background="transparent" speed="1" style={{ width: "400px", height: "400px" }} loop autoplay></lottie-player>
+            </div>}
 
             <OrderModal
                 show={show}

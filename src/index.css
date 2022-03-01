@@ -12,6 +12,7 @@
   --overlay: rgba(51, 51, 51, 0.815);
   --cremisi: rgb(223, 53, 53);
   --white: #fff;
+  --grey: rgb(112, 111, 111);
   --aliceBlue: rgb(214, 230, 243);
   --warning: rgb(218, 150, 86);
 }
@@ -31,7 +32,13 @@ body {
 h1 {
   font-weight: bolder !important;
   color: var(--bgColor);
-  font-size: 2.9em !important;
+  /* font-size: 2.9em; */
+  text-align: left;
+}
+h3 {
+  font-weight: bolder !important;
+  color: var(--bgColor);
+  font-size: 2.2em !important;
   text-align: left;
 }
 
@@ -97,4 +104,9 @@ h1 {
   background-color: var(--bgColor);
   color: #fff;
   border: 1px solid var(--bgColor);
+}
+
+
+.orders-border {
+  border: 3px solid black;
 }

@@ -34,30 +34,33 @@ const Register = () => {
     }
 
     return (
-        <div className="register-container">
+        <div className="register-wrapper">
             {loading && <Loader />}
-            <div className="row justify-content-center">
-                <div className="col-md-5">
-                    <lottie-player
-                        src="https://assets3.lottiefiles.com/packages/lf20_yr6zz3wv.json"
-                        background="transparent"
-                        speed="1"
-                        style={{ width: "300", height: "300" }}
-                        loop
-                        autoplay>
-                    </lottie-player>
-                </div>
-                <div className="col-md-5">
-                    <Form
-                        type="Register"
-                        email={email}
-                        password={password}
-                        confirmPassword={confirmPassword}
-                        setEmail={setEmail}
-                        setPassword={setPassword}
-                        setConfirmPassword={setConfirmPassword}
-                        register={register}
-                    />
+            <div className="p-5 container register-container">
+                <div className="register-row w-100">
+                    <div className="register-col d-flex align-items-center justify-content-center">
+                        <lottie-player
+                            src="https://assets3.lottiefiles.com/packages/lf20_yr6zz3wv.json"
+                            background="transparent"
+                            speed="1"
+                            style={{ width: "300", height: "300" }}
+                            loop
+                            autoplay>
+                        </lottie-player>
+                    </div>
+                    <div className="register-col d-flex align-items-center justify-content-center">
+                        <Form
+                            type="Register"
+                            email={email}
+                            password={password}
+                            confirmPassword={confirmPassword}
+                            setEmail={setEmail}
+                            setPassword={setPassword}
+                            setConfirmPassword={setConfirmPassword}
+                            register={register}
+                        />
+                    </div>
+
                 </div>
             </div>
         </div>

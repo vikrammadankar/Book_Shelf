@@ -26,7 +26,7 @@ const HomePage = () => {
     return (
         <Layout>
             <div className="container">
-                <div className={`d-flex justify-content-between align-items-center mb-5 ${products.length === 0 && "none"}`}>
+                <div className={`page-top mb-5 ${products.length === 0 && "none"}`}>
                     <h1>Shop</h1>
                     <SelectCategories
                         category={category}

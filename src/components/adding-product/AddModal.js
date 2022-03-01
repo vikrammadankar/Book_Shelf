@@ -13,7 +13,7 @@ const AddModal = (props) => {
                 <button className="myBtn" variant="secondary" onClick={props.closeAddModal}>
                     Close
                 </button>
-                <button className="myBtn" variant="primary" onClick={() => props.addNewProductToDB(props.newProduct, props.closeAddModal, props.setLoading)}>
+                <button className="myBtn" variant="primary" onClick={() => props.addNewProductToDB(props.newProduct, props.closeAddModal, props.setLoading, props.setAdminProducts)}>
                     Add
                 </button>
             </Modal.Footer>

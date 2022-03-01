@@ -18,6 +18,7 @@ export { default as Form } from '../auth/Form'
 export { default as ModalForm } from '../orders/ModalForm'
 export { default as OrdersTable } from '../orders/OrdersTable'
 export { default as OrderModal } from '../orders/OrderModal'
+export { default as OrderProduct } from '../orders/OrderProduct'
 
 export { default as SelectCategories } from '../select/SelectCategories'
 export { default as SelectDate } from '../select/SelectDate'

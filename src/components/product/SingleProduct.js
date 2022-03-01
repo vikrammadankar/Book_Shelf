@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 
 // functions
 import { addToCart } from '../../functions/redux-functions'
+import { currencyFormat } from '../../functions/handlers'
 
 const SingleProduct = ({ product }) => {
 
@@ -16,7 +17,7 @@ const SingleProduct = ({ product }) => {
                     <img className="product-info-image my-4" src={product.image} alt={product.name} />
                 </div>
                 <div className="w-50 d-flex align-items-center justify-content-center flex-column">
-                    <p className="product-price">{new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(product.price)}</p>
+                    <p className="product-price">{currencyFormat(product.price)}</p>
                     <h6 className="product-category">{product.category}</h6>
                 </div>
             </div>

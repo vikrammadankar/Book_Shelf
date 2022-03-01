@@ -57,6 +57,7 @@ const AdminTable = ({ adminProducts, setLoading, setAdminProducts, orders }) => 
                         deleteProductFromDB={deleteProductFromDB}
                         editProduct={editProduct}
                         show={show}
+                        setShow={setShow}
                         productToEdit={productToEdit}
                         setProductToEdit={setProductToEdit}
                         closeModal={closeModal}

@@ -1,9 +1,14 @@
 import React from 'react'
+import { currencyFormat } from '../../functions/handlers'
 
-const CartFooter = ({total, showModal}) => {
+const CartFooter = ({ total, showModal }) => {
+
     return (
-        <div className="d-flex justify-content-between my-5">
-            <h2 className="total-amount">Total: {new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(total)}</h2>
+        <div className="cart-footer my-5">
+            <div className="d-flex align-items-center">
+                <span className="total-amount">Total</span>
+                <span className="total">{currencyFormat(total)}</span>
+            </div>
             <button className="myBtn" onClick={showModal}>
                 Place Order
             </button>

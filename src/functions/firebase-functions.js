@@ -101,12 +101,13 @@ const editProductFromDB = async (adminProduct, setLoading, closeModal, setAdminP
         toast.error("Product Edited Failed!")
     }
 }
-const addNewProductToDB = async (newProduct, closeAddModal, setLoading) => {
+const addNewProductToDB = async (newProduct, closeAddModal, setLoading, setAdminProducts) => {
     try {
         setLoading(true)
         await addDoc(collection(DB, "products"), newProduct)
         toast.success("Product Added Succesfully!")
-        window.location.reload()
+        // window.location.reload()
+        getProducts(setAdminProducts, setLoading)
         closeAddModal()
     } catch (error) {
         setLoading(false)
@@ -120,7 +121,7 @@ const placeOrder = async (cartItems, info, setLoading, clearCart, closeModal, di
         id: JSON.parse(localStorage.getItem("currentUser")).user.uid,
         cartItems,
         info,
-        date: new Date().toLocaleDateString('en-EN', {
+        date: new Date().toLocaleDateString('it-IT', {
             day: 'numeric',
             month: 'long',
             year: 'numeric'

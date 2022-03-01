@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 // functions
 import { addToCart } from '../../functions/redux-functions'
-import { lazyLoader } from '../../functions/handlers'
+import { lazyLoader, currencyFormat } from '../../functions/handlers'
 
 
 const Product = ({ product }) => {
@@ -23,13 +23,13 @@ const Product = ({ product }) => {
 
     return (
         <div className="col-lg-4 col-md-6 col-sm-12 col-xs-12 product-container">
-            <div className="mb-4 pb-5 text-center product">
+            <div className="mb-4 p-5 text-center product">
                 <div className="product-content">
-                    <h3>{product.name}</h3>
+                    <h4 className="text-center mb-3">{product.name}</h4>
                     <img className="product-img" data-src={product.image} alt={product.name} />
                 </div>
                 <div className="product-actions">
-                    <h2>{new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(product.price)}</h2>
+                    <h2>{currencyFormat(product.price)}</h2>
                     <div className="d-flex">
                         <button onClick={() => addToCart(product, dispatch)} className="myBtn mx-2">Add To Cart</button>
                         <button onClick={() => navigate(`/productinfo/${product.id}`)} className="myBtn mx-2">View</button>

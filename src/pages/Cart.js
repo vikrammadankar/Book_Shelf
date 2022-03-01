@@ -16,8 +16,8 @@ const Cart = () => {
     return (
         <Layout>
             <div className={`container ${cartItems.length === 0 && 'text-center d-flex align-items-center justify-content-center'}`}>
-            <CartTable cartItems={cartItems} />
-        </div>
+                <CartTable cartItems={cartItems} />
+            </div>
         </Layout >
     )
 }

@@ -1,25 +1,29 @@
 import React, { useState, useEffect } from 'react'
 
-import { SelectDate } from '../components-provider/components-provider'
+import { SelectDate, OrderProduct } from '../components-provider/components-provider'
 
-import { lazyLoader } from '../../functions/handlers'
+import { lazyLoader, currencyFormat, extractTotal } from '../../functions/handlers'
 
 const OrdersTable = ({ orders }) => {
 
     const [dates, setDates] = useState([])
     const [date, setDate] = useState("")
+    let [totals, setTotals] = useState([])
 
     useEffect(() => {
         setDates([...new Set(orders.map(order => order.order.date))])
     }, [orders])
 
-    lazyLoader()
+    useEffect(() => {
+        extractTotal(orders, setTotals)
+    }, [orders])
 
+    lazyLoader()
 
     return (
         <>
 
-            {orders.length ? <div className="d-flex justify-content-between align-items-center mb-5">
+            {orders.length ? <div className="page-top mb-5">
                 <h1>Orders</h1>
                 <SelectDate dates={dates} date={date} setDate={setDate} />
             </div> : null}
@@ -30,32 +34,20 @@ const OrdersTable = ({ orders }) => {
                     .map((order, index) => {
                         return (
                             <>
-                                <table key={order.order.email} className="table mb-5 border-bottom bg-light">
-                                    <thead>
-                                        <tr>
-                                            <th>Image</th>
-                                            <th>Name</th>
-                                            <th>Price</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                                <div key={order.order.email} className="orders-border mb-5">
+                                    <div>
                                         {order.order.cartItems.map((item) => {
-                                            return (<tr key={item.uid}>
-                                                <td>
-                                                    <img className="product-img" data-src={item.image} alt={item.name} width="80" />
-                                                </td>
-                                                <td>{item.name}</td>
-                                                <td>{new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(item.price)}</td>
-                                            </tr>)
+                                            return (<OrderProduct item={item} />)
                                         })}
-                                    </tbody>
+                                    </div>
 
-                                    <tfoot>
-                                        <tr>
-                                            <td>Total: {order.order.cartItems.reduce((tot, item) => parseInt(new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR' }).format(item.price)) + tot, 0)}</td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
+                                    <div className="p-4">
+                                        <div className="d-flex align-items-center">
+                                            <span className="total-amount">Total</span>
+                                            <span className="total">{currencyFormat(totals[index])}</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </>
                         )
                     }) : <lottie-player src="https://assets7.lottiefiles.com/private_files/lf30_oqpbtola.json" background="transparent" speed="1" style={{ width: "400px", height: "400px" }} loop autoplay></lottie-player>}
