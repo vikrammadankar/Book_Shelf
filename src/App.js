@@ -6,7 +6,6 @@ import {
   Register,
   ProductInfo,
   Cart,
-  Orders,
 } from "./pages/pages-provider/pages-provider";
 import { ToastContainer } from "react-toastify";
 
@@ -93,6 +92,7 @@ function App() {
 
 export default App;
 
+/* Higher Order */
 export const ProtectedRoutes = ({ children }) => {
   if (localStorage.getItem("currentUser")) {
     return children;
