@@ -26,7 +26,8 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-
+import OrdersPage from "./pages/OrdersPage";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
   return (
@@ -62,10 +63,26 @@ function App() {
               </ProtectedRoutes>
             }
           />
-         
+          <Route
+            exact="true"
+            path="/orders"
+            element={
+              <ProtectedRoutes>
+                <OrdersPage />
+              </ProtectedRoutes>
+            }
+          />
+          <Route
+            exact="true"
+            path="/admin"
+            element={
+              <ProtectedRoutes>
+                <AdminPage />
+              </ProtectedRoutes>
+            }
+          />
 
           {/* free routes */}
-          {/* <Route exact="true" path={PATHS.HOME} element={<HomePage />} /> */}
           <Route exact="true" path={PATHS.LOGIN} element={<Login />} />
           <Route exact="true" path={PATHS.REGISTER} element={<Register />} />
         </Routes>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { FaTrash } from "react-icons/fa";
 import { addDoc, collection } from "firebase/firestore";
-import { deleteFromCart } from "../pages/pages-provider/pages-functions";
+// import { deleteFromCart } from "../pages/pages-provider/pages-functions";
 import DB from "../firebase";
 import { toast } from "react-toastify";
 import { Loader } from "../components/components-provider/components-provider";
@@ -15,6 +15,9 @@ const CartTable = ({ cartItems }) => {
 /*   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]); */
+  const deleteFromCart = (cartItem, dispatch) => {
+    dispatch({ type: "DELETE_FROM_CART", payload: cartItem })
+}
 
   useEffect(() => {
     let tempTotal = 0;
