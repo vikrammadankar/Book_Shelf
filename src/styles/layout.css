@@ -1,3 +1,8 @@
+:root {
+    --bgColor: rgba(8, 206, 163, 0.774);
+    --hover: rgba(223, 140, 15, 0.904);
+}
+
 /* bootstrap overwriting */
 .navbar.myNavbar{
     background-color: var(--bgColor);
@@ -6,11 +11,9 @@
 .navbar-brand.myLink {
     font-weight: bold;
 }
-
-.navbar-brand.myLink,
-.nav-link.myLink {
-    color: var(--white) !important;
-    font-weight: bold;
+.nav-link.myLink,
+.navbar-brand.myLink {
+    color: #fff !important;
 }
 
 .navbar-toggler.myToggle {
@@ -31,7 +34,7 @@
     z-index: 2;
 }
 .cart-counter {
-    color: var(--cremisi);
+    color: rgb(212, 31, 31);
     font-weight: bold;
 }
 
@@ -44,6 +47,10 @@
 
 .footer {
     padding: 40px 10px;
+    /* position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0; */
     text-align: center;
     background-color: var(--bgColor);
     color: #fff;
@@ -53,4 +60,22 @@
     margin: 0;
 }
 
+button {
+    padding: .5rem 1.2rem ;
+    box-shadow: none;
+    border: none;
+    outline: none;
+    background-color: var(--bgColor);
+    color: #fff;
+    font-weight: 500;
+    transition: all .3s ease-in-out;
+}
+button:hover {
+    background-color: var(--hover);
+}
 
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}

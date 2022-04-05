@@ -1,8 +1,6 @@
-// React & Redux
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 
-// components
 import { Layout, CartTable } from '../components/components-provider/components-provider'
 
 const Cart = () => {
@@ -15,10 +13,10 @@ const Cart = () => {
 
     return (
         <Layout>
-            <div className={`container ${cartItems.length === 0 && 'text-center d-flex align-items-center justify-content-center'}`}>
+            <div className={`container text-center ${cartItems.length < 4 && 'myContainer'}`}>
                 <CartTable cartItems={cartItems} />
             </div>
-        </Layout >
+        </Layout>
     )
 }
 

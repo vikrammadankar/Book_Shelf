@@ -1,23 +1,8 @@
 /* monsterrat font import  */
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@500&family=Poppins:wght@100;300;400;700&family=Road+Rage&display=swap');
 
-:root {
-  --bgColor: rgba(8, 206, 163);
-  --hover: rgba(223, 140, 15);
-  --gradient1: rgb(235, 189, 122);
-  --gradient2: rgb(212, 166, 97);
-  --gradient3: rgb(185, 137, 64);
-  --gradient4: rgb(236, 205, 159);
-  --boxShadow: rgba(99, 99, 99, 0.2);
-  --overlay: rgba(51, 51, 51, 0.815);
-  --cremisi: rgb(223, 53, 53);
-  --white: #fff;
-  --grey: rgb(112, 111, 111);
-  --aliceBlue: rgb(214, 230, 243);
-  --warning: rgb(218, 150, 86);
-}
 
-/* general settings and classes */
+/* general settings */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -25,88 +10,5 @@
 }
 
 body {
-  overflow-x: hidden;
-  font-family: 'Poppins', sans-serif;
-}
-
-h1 {
-  font-weight: bolder !important;
-  color: var(--bgColor);
-  /* font-size: 2.9em; */
-  text-align: left;
-}
-h3 {
-  font-weight: bolder !important;
-  color: var(--bgColor);
-  font-size: 2.2em !important;
-  text-align: left;
-}
-
-.none {
-  display: none;
-}
-
-.myContainer {
-  position: relative;
-}
-
-/* heights */
-.vh-80 {
-  height: 80vh;
-}
-
-.different-h {
-  height: 55.9vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* btn style */
-.myBtn {
-  padding: .5rem 1.2rem ;
-  box-shadow: none;
-  border: none;
-  outline: none;
-  background-color: var(--bgColor);
-  color: var(--white);
-  font-weight: 500;
-  transition: all .3s ease-in-out;
-}
-.myBtn:hover {
-  background-color: var(--hover);
-}
-
-/* icons */
-.delete-icon {
-  cursor: pointer;
-  transition: all .3s ease-in-out;
-}
-.delete-icon:hover {
-  color: var(--cremisi);
-}
-.edit-icon {
-  cursor: pointer;
-  transition: all .3s ease-in-out;
-}
-.edit-icon:hover {
-  color: var(--warning);
-}
-
-/* react-bootstrap tabs */
-.nav-pills .nav-item .nav-link {
-  margin-right: 2em;
-  background-color: #fff;
-  border: 1px solid var(--bgColor);
-  color: var(--bgColor);
-}
-.nav-pills .nav-item .nav-link.active {
-  background-color: var(--bgColor);
-  color: #fff;
-  border: 1px solid var(--bgColor);
-}
-
-
-.orders-border {
-  border: 3px solid black;
+  font-family: 'Montserrat', sans-serif;
 }

@@ -1,50 +1,59 @@
-// React stuff
-import React, { useState, useEffect } from 'react'
-
-// components
-import { Layout, Product, Loader, SelectCategories } from '../components/components-provider/components-provider'
-
-// functions
-import { getProducts } from '../functions/firebase-functions'
+import React, { useState, useEffect } from "react";
+import {
+  Layout,
+  Product,
+} from "../components/components-provider/components-provider";
+import { getProducts } from "./pages-provider/pages-functions";
 
 const HomePage = () => {
+  const [products, setProducts] = useState([]);
+  const [searchKey, setSearchKey] = useState("");
+  const [filterType, setFilterType] = useState("");
+  const [loading, setLoading] = useState(false)
 
-    const [products, setProducts] = useState([])
-    const [loading, setLoading] = useState(false)
+  useEffect(() => {
+    getProducts(setProducts);
+  }, []);
 
-    const [category, setCategory] = useState("")
-    const [categories, setCategories] = useState([])
+  return (
+    <Layout loading={loading}>
+      <div className="container">
+        <div className="d-flex w-50 mb-4">
+          <input
+            type="text"
+            placeholder="seach items"
+            className="form-control"
+            value={searchKey}
+            onChange={(e) => {
+              setSearchKey(e.target.value);
+            }}
+          />
+          <select
+            value={filterType}
+            onChange={(e) => {
+              setFilterType(e.target.value);
+            }}
+            className="form-control mx-2"
+          >
+            <option value="">All</option>
+            <option value="microsoft">Microsoft</option>
+            <option value="software">Software engineering</option>
+            <option value="coffee">coffee house</option>
+            <option value="java">Java </option>
+            <option value="webdev">web development</option>
+          </select>
+        </div>
+        <div className="row">
+          {products
+             .filter((obj) => obj.title.toLowerCase().includes(searchKey))
+             .filter((obj) => obj.categories.toLowerCase().includes(filterType))
+            .map((product) => (
+              <Product product={product} key={product.id} />
+            ))}
+        </div>
+      </div>
+    </Layout>
+  );
+};
 
-    useEffect(() => {
-        getProducts(setProducts, setLoading)
-    }, [])
-
-    useEffect(() => {
-        setCategories([...new Set(products.map(product => product.category))])
-    }, [products])
-
-    return (
-        <Layout>
-            <div className="container">
-                <div className={`page-top mb-5 ${products.length === 0 && "none"}`}>
-                    <h1>Shop</h1>
-                    <SelectCategories
-                        category={category}
-                        setCategory={setCategory}
-                        categories={categories}
-                    />
-                </div>
-                <div className={`row ${products.length === 0 && "vh-100"}`}>
-                    {loading && <Loader />}
-                    {products.length > 0 && products
-                        .filter(toFilterCategory => toFilterCategory.category.toLowerCase().includes(category))
-                        .map(product => (
-                            <Product product={product} key={product.id} />
-                        ))}
-                </div>
-            </div>
-        </Layout>
-    )
-}
-
-export default HomePage
+export default HomePage;
